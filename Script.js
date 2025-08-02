@@ -498,9 +498,14 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Start the animation cycle
         startAnimation: function() {
-            if (this.isAnimating) return;
+            console.log('Starting animation cycle, isAnimating:', this.isAnimating);
+            if (this.isAnimating) {
+                console.log('Animation already running, skipping');
+                return;
+            }
             
             this.isAnimating = true;
+            console.log('Animation started, calling startPhase1');
             this.startPhase1();
         },
         
@@ -516,19 +521,35 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Reset all elements to initial state
         resetElements: function() {
-            // Check if elements exist before accessing their style properties
-            if (this.elements.vOverlap) this.elements.vOverlap.style.opacity = '0';
-            if (this.elements.oneOverlap) this.elements.oneOverlap.style.opacity = '0';
-            if (this.elements.part3) this.elements.part3.style.opacity = '0';
-            if (this.elements.final) this.elements.final.style.opacity = '0';
+            console.log('Resetting logo elements to initial state');
+            
+            // Hide overlap and part3 elements
+            if (this.elements.vOverlap) {
+                this.elements.vOverlap.style.opacity = '0';
+                this.elements.vOverlap.style.display = 'none';
+            }
+            if (this.elements.oneOverlap) {
+                this.elements.oneOverlap.style.opacity = '0';
+                this.elements.oneOverlap.style.display = 'none';
+            }
+            if (this.elements.part3) {
+                this.elements.part3.style.opacity = '0';
+                this.elements.part3.style.display = 'none';
+            }
             
             // Reset separate elements to initial positions
-            if (this.elements.vSeparate) this.elements.vSeparate.style.transform = 'translateX(-100%)';
-            if (this.elements.oneSeparate) this.elements.oneSeparate.style.transform = 'translateX(100%)';
+            if (this.elements.vSeparate) {
+                this.elements.vSeparate.style.transform = 'translateX(-100%)';
+                this.elements.vSeparate.style.opacity = '1';
+                this.elements.vSeparate.style.display = 'block';
+            }
+            if (this.elements.oneSeparate) {
+                this.elements.oneSeparate.style.transform = 'translateX(100%)';
+                this.elements.oneSeparate.style.opacity = '1';
+                this.elements.oneSeparate.style.display = 'block';
+            }
             
-            // Show separate elements
-            if (this.elements.vSeparate) this.elements.vSeparate.style.opacity = '1';
-            if (this.elements.oneSeparate) this.elements.oneSeparate.style.opacity = '1';
+            console.log('Logo elements reset complete');
         },
         
         // Start Phase 1 animation
@@ -538,17 +559,148 @@ document.addEventListener('DOMContentLoaded', function() {
             // V and 1 slide in from opposite sides
             // The CSS animations will handle the sliding motion
             
-            // Reset and restart after 4 seconds (0.5s slide in + 0.3s pause + 0.4s shift + 0.4s overlap + 0.3s crossfade + 2.1s buffer)
+            // After animation completes, show the final logo and stop the cycle
             this.animationInterval = setTimeout(() => {
                 if (this.isAnimating) {
-                    this.resetElements();
-                    this.startPhase1();
+                    this.showFinalLogo();
+                    
+                    // Stop the animation cycle - don't restart automatically
+                    this.isAnimating = false;
+                    console.log('Animation cycle complete - waiting for click to restart');
                 }
-            }, 4000);
+            }, 2000); // Animation completes after 2 seconds
+        },
+        
+        // Force restart animation (for click functionality)
+        restartAnimation: function() {
+            console.log('Restarting logo animation');
+            
+            // Stop any ongoing animation
+            this.stopAnimation();
+            
+            // Clear any existing timeouts
+            if (this.animationInterval) {
+                clearTimeout(this.animationInterval);
+                this.animationInterval = null;
+            }
+            
+            // First, hide the final logo (if it's visible)
+            if (this.elements.final) {
+                this.elements.final.style.opacity = '0';
+                this.elements.final.style.display = 'none';
+                this.elements.final.style.visibility = 'hidden';
+            }
+            
+            // Reset elements to initial state
+            this.resetElements();
+            
+            // Force CSS animation restart by removing and re-adding classes
+            if (this.elements.vSeparate) {
+                this.elements.vSeparate.style.animation = 'none';
+                this.elements.vSeparate.offsetHeight; // Trigger reflow
+                this.elements.vSeparate.style.animation = null;
+            }
+            
+            if (this.elements.oneSeparate) {
+                this.elements.oneSeparate.style.animation = 'none';
+                this.elements.oneSeparate.offsetHeight; // Trigger reflow
+                this.elements.oneSeparate.style.animation = null;
+            }
+            
+            // Shorter delay since we're not hiding everything
+            setTimeout(() => {
+                console.log('Starting animation after reset');
+                this.startAnimation();
+            }, 100);
+        },
+        
+        // Hide all elements to prevent visual overlap
+        hideAllElements: function() {
+            console.log('Hiding all logo elements');
+            
+            // Hide all elements immediately
+            Object.values(this.elements).forEach(element => {
+                if (element) {
+                    element.style.opacity = '0';
+                    element.style.display = 'none';
+                    element.style.visibility = 'hidden';
+                }
+            });
+        },
+        
+        // Show final logo (for when animation completes)
+        showFinalLogo: function() {
+            console.log('Showing final logo');
+            
+            // Hide all other elements
+            if (this.elements.vSeparate) this.elements.vSeparate.style.opacity = '0';
+            if (this.elements.oneSeparate) this.elements.oneSeparate.style.opacity = '0';
+            if (this.elements.vOverlap) this.elements.vOverlap.style.opacity = '0';
+            if (this.elements.oneOverlap) this.elements.oneOverlap.style.opacity = '0';
+            if (this.elements.part3) this.elements.part3.style.opacity = '0';
+            
+            // Show final logo by triggering the CSS animation
+            if (this.elements.final) {
+                // Reset the animation
+                this.elements.final.style.animation = 'none';
+                this.elements.final.offsetHeight; // Trigger reflow
+                
+                // Apply the same CSS animation as the original
+                this.elements.final.style.animation = 'finalLogoCrossfade 0.3s ease-in-out forwards';
+                this.elements.final.style.display = 'block';
+                this.elements.final.style.visibility = 'visible';
+            }
         }
     };
     
     // Initialize Logo Animation V2 only if logo elements exist
-    // Temporarily disabled to fix button functionality
-    console.log('Logo animation disabled for debugging');
+    console.log('Checking logo elements:', {
+        vSeparate: logoAnimationV2.elements.vSeparate,
+        oneSeparate: logoAnimationV2.elements.oneSeparate,
+        container: document.querySelector('.logo-animation-v2-container')
+    });
+    
+    // Always add click functionality regardless of animation state
+    const logoContainer = document.querySelector('.logo-animation-v2-container');
+    console.log('Logo container found:', logoContainer);
+    
+    if (logoContainer) {
+        // Add click functionality to replay animation
+        logoContainer.addEventListener('click', function(e) {
+            console.log('Logo clicked - replaying animation', e);
+            e.preventDefault();
+            e.stopPropagation();
+            
+            // Force restart the animation
+            if (logoAnimationV2.elements.vSeparate && logoAnimationV2.elements.oneSeparate) {
+                logoAnimationV2.restartAnimation();
+            } else {
+                console.log('Logo elements not found for restart');
+            }
+        });
+        
+        // Add cursor pointer to indicate clickability
+        logoContainer.style.cursor = 'pointer';
+        
+        // Add hover effect
+        logoContainer.addEventListener('mouseenter', function() {
+            this.style.opacity = '0.8';
+        });
+        
+        logoContainer.addEventListener('mouseleave', function() {
+            this.style.opacity = '1';
+        });
+        
+        console.log('Click event listener added to logo container');
+    } else {
+        console.log('Logo container not found');
+    }
+    
+    // Initialize animation if elements exist
+    if (logoAnimationV2.elements.vSeparate && logoAnimationV2.elements.oneSeparate) {
+        console.log('Logo elements found - initializing animation');
+        logoAnimationV2.init();
+    } else {
+        console.log('Logo animation disabled - elements not found');
+    }
 });

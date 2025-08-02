@@ -2029,11 +2029,21 @@ h1, h2, h3, h4 {
     }
     
     .points-penalties-container {
-        justify-items: center;
+        display: flex;
+        flex-direction: column;
         align-items: center;
+        justify-content: center;
         margin: 0 auto;
         max-width: 100%;
         padding: 0 var(--spacing-md);
+        gap: var(--spacing-xl);
+    }
+    
+    .points-system,
+    .penalties-system {
+        width: 100%;
+        max-width: 100%;
+        margin: 0 auto;
     }
     
     .subsection-title {
@@ -2052,10 +2062,22 @@ h1, h2, h3, h4 {
     }
     
     .points-penalties-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
         gap: var(--spacing-lg);
         padding: 0 var(--spacing-sm);
         margin: 0 auto;
         width: 100%;
+        max-width: 100%;
+    }
+    
+    .points-system,
+    .penalties-system {
+        width: 100%;
+        max-width: 100%;
+        margin: 0 auto;
     }
     
     .points-grid {
@@ -2200,11 +2222,31 @@ h1, h2, h3, h4 {
     -webkit-tap-highlight-color: transparent;
     /* Ensure text is treated as plain text, not phone numbers */
     pointer-events: none;
+    /* Override any phone number styling */
+    color: var(--color-text-primary) !important;
+    text-decoration: none !important;
+    -webkit-text-decoration: none !important;
+    -moz-text-decoration: none !important;
+    /* Remove any phone number specific styling */
+    -webkit-text-fill-color: var(--color-text-primary) !important;
+    -webkit-text-stroke: none !important;
 }
 
 /* Allow pointer events for the parent container but not the text itself */
 .event-list {
     pointer-events: auto;
+}
+
+/* Additional override for any remaining phone number styling */
+.event-list li a,
+.event-list li a:visited,
+.event-list li a:hover,
+.event-list li a:active {
+    color: var(--color-text-primary) !important;
+    text-decoration: none !important;
+    -webkit-text-decoration: none !important;
+    -moz-text-decoration: none !important;
+    pointer-events: none !important;
 }
 
 /* Schedule Page Styles */
@@ -3572,6 +3614,20 @@ h1, h2, h3, h4 {
     align-items: center;
     margin: 60px 0;
     height: 200px;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+
+.logo-animation-v2-container:hover {
+    opacity: 0.8;
+}
+
+.logo-animation-v2-container:active {
+    opacity: 0.6;
 }
 
 .logo-animation-v2 {
@@ -3792,16 +3848,35 @@ h1, h2, h3, h4 {
     .logo-animation-v2-container {
         margin: 40px 0;
         height: 150px;
+        /* Enhanced touch feedback for mobile */
+        -webkit-tap-highlight-color: rgba(0, 0, 0, 0.1);
+        touch-action: manipulation;
     }
     
-    .logo-v-separate,
-    .logo-1-separate,
+    .logo-v-separate {
+        width: 120px;
+        height: 125px;
+        left: 10px;
+    }
+    
+    .logo-1-separate {
+        width: 120px;
+        height: 125px;
+        right: 10px;
+    }
+    
     .logo-v-overlap,
     .logo-1-overlap,
-    .logo-part3,
-    .logo-final {
+    .logo-part3 {
         width: 250px;
         height: 125px;
+        left: 0;
+    }
+    
+    .logo-final {
+        width: 120px;
+        height: 125px;
+        left: 65px;
     }
 }
 
@@ -3814,16 +3889,35 @@ h1, h2, h3, h4 {
     .logo-animation-v2-container {
         margin: 30px 0;
         height: 120px;
+        /* Enhanced touch feedback for mobile */
+        -webkit-tap-highlight-color: rgba(0, 0, 0, 0.1);
+        touch-action: manipulation;
     }
     
-    .logo-v-separate,
-    .logo-1-separate,
+    .logo-v-separate {
+        width: 100px;
+        height: 100px;
+        left: 8px;
+    }
+    
+    .logo-1-separate {
+        width: 100px;
+        height: 100px;
+        right: 8px;
+    }
+    
     .logo-v-overlap,
     .logo-1-overlap,
-    .logo-part3,
-    .logo-final {
+    .logo-part3 {
         width: 200px;
         height: 100px;
+        left: 0;
+    }
+    
+    .logo-final {
+        width: 100px;
+        height: 100px;
+        left: 50px;
     }
 }
 
