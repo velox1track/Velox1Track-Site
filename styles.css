@@ -4777,11 +4777,11 @@ h1, h2, h3, h4 {
   /* Mobile-specific keyframes for side-by-side effect */
   @keyframes vSlideInFromLeft {
     0% { opacity: 1; transform: translateX(-100%); }
-    100% { opacity: 1; transform: translateX(-10px); }
+    100% { opacity: 1; transform: translateX(0); }
   }
   @keyframes oneSlideInFromRight {
     0% { opacity: 1; transform: translateX(100%); }
-    100% { opacity: 1; transform: translateX(10px); }
+    100% { opacity: 1; transform: translateX(0); }
   }
   /* Mobile-specific overlap keyframes */
   @keyframes vShiftToOverlap {
@@ -4822,11 +4822,11 @@ h1, h2, h3, h4 {
   }
   @keyframes vSlideInFromLeft {
     0% { opacity: 1; transform: translateX(-100%); }
-    100% { opacity: 1; transform: translateX(-8px); }
+    100% { opacity: 1; transform: translateX(0); }
   }
   @keyframes oneSlideInFromRight {
     0% { opacity: 1; transform: translateX(100%); }
-    100% { opacity: 1; transform: translateX(8px); }
+    100% { opacity: 1; transform: translateX(0); }
   }
   /* Mobile-specific overlap keyframes */
   @keyframes vShiftToOverlap {
