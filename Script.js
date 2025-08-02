@@ -526,27 +526,33 @@ document.addEventListener('DOMContentLoaded', function() {
             // Hide overlap and part3 elements
             if (this.elements.vOverlap) {
                 this.elements.vOverlap.style.opacity = '0';
-                this.elements.vOverlap.style.display = 'none';
+                this.elements.vOverlap.style.visibility = 'hidden';
             }
             if (this.elements.oneOverlap) {
                 this.elements.oneOverlap.style.opacity = '0';
-                this.elements.oneOverlap.style.display = 'none';
+                this.elements.oneOverlap.style.visibility = 'hidden';
             }
             if (this.elements.part3) {
                 this.elements.part3.style.opacity = '0';
-                this.elements.part3.style.display = 'none';
+                this.elements.part3.style.visibility = 'hidden';
             }
             
             // Reset separate elements to initial positions
             if (this.elements.vSeparate) {
                 this.elements.vSeparate.style.transform = 'translateX(-100%)';
                 this.elements.vSeparate.style.opacity = '1';
-                this.elements.vSeparate.style.display = 'block';
+                this.elements.vSeparate.style.visibility = 'visible';
             }
             if (this.elements.oneSeparate) {
                 this.elements.oneSeparate.style.transform = 'translateX(100%)';
                 this.elements.oneSeparate.style.opacity = '1';
-                this.elements.oneSeparate.style.display = 'block';
+                this.elements.oneSeparate.style.visibility = 'visible';
+            }
+            
+            // Hide final logo
+            if (this.elements.final) {
+                this.elements.final.style.opacity = '0';
+                this.elements.final.style.visibility = 'hidden';
             }
             
             console.log('Logo elements reset complete');
@@ -584,13 +590,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 this.animationInterval = null;
             }
             
-            // First, hide the final logo (if it's visible)
-            if (this.elements.final) {
-                this.elements.final.style.opacity = '0';
-                this.elements.final.style.display = 'none';
-                this.elements.final.style.visibility = 'hidden';
-            }
-            
             // Reset elements to initial state
             this.resetElements();
             
@@ -614,20 +613,6 @@ document.addEventListener('DOMContentLoaded', function() {
             }, 100);
         },
         
-        // Hide all elements to prevent visual overlap
-        hideAllElements: function() {
-            console.log('Hiding all logo elements');
-            
-            // Hide all elements immediately
-            Object.values(this.elements).forEach(element => {
-                if (element) {
-                    element.style.opacity = '0';
-                    element.style.display = 'none';
-                    element.style.visibility = 'hidden';
-                }
-            });
-        },
-        
         // Show final logo (for when animation completes)
         showFinalLogo: function() {
             console.log('Showing final logo');
@@ -647,7 +632,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 
                 // Apply the same CSS animation as the original
                 this.elements.final.style.animation = 'finalLogoCrossfade 0.3s ease-in-out forwards';
-                this.elements.final.style.display = 'block';
                 this.elements.final.style.visibility = 'visible';
             }
         }
@@ -691,6 +675,17 @@ document.addEventListener('DOMContentLoaded', function() {
             this.style.opacity = '1';
         });
         
+        // Add touch event for mobile
+        logoContainer.addEventListener('touchstart', function(e) {
+            console.log('Logo touched on mobile');
+            this.style.opacity = '0.6';
+        });
+        
+        logoContainer.addEventListener('touchend', function(e) {
+            console.log('Logo touch ended on mobile');
+            this.style.opacity = '1';
+        });
+        
         console.log('Click event listener added to logo container');
     } else {
         console.log('Logo container not found');
@@ -700,6 +695,23 @@ document.addEventListener('DOMContentLoaded', function() {
     if (logoAnimationV2.elements.vSeparate && logoAnimationV2.elements.oneSeparate) {
         console.log('Logo elements found - initializing animation');
         logoAnimationV2.init();
+        
+        // Add mobile-specific debugging
+        if (window.innerWidth <= 768) {
+            console.log('Mobile device detected - checking animation compatibility');
+            console.log('V separate element:', logoAnimationV2.elements.vSeparate);
+            console.log('1 separate element:', logoAnimationV2.elements.oneSeparate);
+            console.log('Animation styles:', {
+                vSeparate: window.getComputedStyle(logoAnimationV2.elements.vSeparate).animation,
+                oneSeparate: window.getComputedStyle(logoAnimationV2.elements.oneSeparate).animation
+            });
+            
+            // Add manual test trigger for mobile debugging
+            setTimeout(() => {
+                console.log('Mobile animation test - triggering manual restart');
+                logoAnimationV2.restartAnimation();
+            }, 3000); // Test after 3 seconds
+        }
     } else {
         console.log('Logo animation disabled - elements not found');
     }
