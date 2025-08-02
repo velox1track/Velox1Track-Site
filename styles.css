@@ -3732,6 +3732,55 @@ h1, h2, h3, h4 {
     }
 }
 
+/* Mobile-specific slide-in keyframes to prevent crossing */
+@media (max-width: 768px) {
+    @keyframes vSlideInFromLeft {
+        0% {
+            opacity: 1;
+            transform: translateX(-100%);
+        }
+        100% {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+
+    @keyframes oneSlideInFromRight {
+        0% {
+            opacity: 1;
+            transform: translateX(100%);
+        }
+        100% {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+}
+
+@media (max-width: 600px) {
+    @keyframes vSlideInFromLeft {
+        0% {
+            opacity: 1;
+            transform: translateX(-100%);
+        }
+        100% {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+
+    @keyframes oneSlideInFromRight {
+        0% {
+            opacity: 1;
+            transform: translateX(100%);
+        }
+        100% {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+}
+
 @keyframes vOverlapAppear {
     0% {
         opacity: 0;
@@ -4693,15 +4742,69 @@ h1, h2, h3, h4 {
 
 @media (max-width: 768px) {
     .logo-final {
-        width: 120px;
+        width: 250px;
         height: 125px;
-        left: 50px;
+        left: 0;
     }
 }
 @media (max-width: 600px) {
     .logo-final {
-        width: 100px;
+        width: 200px;
         height: 100px;
-        left: 40px;
+        left: 0;
     }
+}
+
+/* --- Mobile Logo Animation Fixes --- */
+@media (max-width: 768px) {
+  .logo-v-separate {
+    width: 120px;
+    height: 125px;
+    left: 0;
+  }
+  .logo-1-separate {
+    width: 120px;
+    height: 125px;
+    right: 0;
+  }
+  .logo-final {
+    width: 250px;
+    height: 125px;
+    left: 0;
+  }
+  /* Mobile-specific keyframes for side-by-side effect */
+  @keyframes vSlideInFromLeft {
+    0% { opacity: 1; transform: translateX(-100%); }
+    100% { opacity: 1; transform: translateX(-10px); }
+  }
+  @keyframes oneSlideInFromRight {
+    0% { opacity: 1; transform: translateX(100%); }
+    100% { opacity: 1; transform: translateX(10px); }
+  }
+}
+
+@media (max-width: 600px) {
+  .logo-v-separate {
+    width: 100px;
+    height: 100px;
+    left: 0;
+  }
+  .logo-1-separate {
+    width: 100px;
+    height: 100px;
+    right: 0;
+  }
+  .logo-final {
+    width: 200px;
+    height: 100px;
+    left: 0;
+  }
+  @keyframes vSlideInFromLeft {
+    0% { opacity: 1; transform: translateX(-100%); }
+    100% { opacity: 1; transform: translateX(-8px); }
+  }
+  @keyframes oneSlideInFromRight {
+    0% { opacity: 1; transform: translateX(100%); }
+    100% { opacity: 1; transform: translateX(8px); }
+  }
 }
