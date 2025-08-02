@@ -4016,9 +4016,9 @@ h1, h2, h3, h4 {
     }
     
     .logo-final {
-        width: 120px;
+        width: 250px;
         height: 125px;
-        left: 65px;
+        left: 0;
     }
 }
 
@@ -4057,9 +4057,9 @@ h1, h2, h3, h4 {
     }
     
     .logo-final {
-        width: 100px;
+        width: 200px;
         height: 100px;
-        left: 50px;
+        left: 0;
     }
 }
 
@@ -4781,6 +4781,15 @@ h1, h2, h3, h4 {
     0% { opacity: 1; transform: translateX(100%); }
     100% { opacity: 1; transform: translateX(10px); }
   }
+  /* Mobile-specific overlap keyframes */
+  @keyframes vShiftToOverlapFinal {
+    0% { opacity: 1; transform: translateX(-10px); }
+    100% { opacity: 1; transform: translateX(0); }
+  }
+  @keyframes oneShiftToOverlapFinal {
+    0% { opacity: 1; transform: translateX(10px); }
+    100% { opacity: 1; transform: translateX(0); }
+  }
 }
 
 @media (max-width: 600px) {
@@ -4806,5 +4815,14 @@ h1, h2, h3, h4 {
   @keyframes oneSlideInFromRight {
     0% { opacity: 1; transform: translateX(100%); }
     100% { opacity: 1; transform: translateX(8px); }
+  }
+  /* Mobile-specific overlap keyframes */
+  @keyframes vShiftToOverlapFinal {
+    0% { opacity: 1; transform: translateX(-8px); }
+    100% { opacity: 1; transform: translateX(0); }
+  }
+  @keyframes oneShiftToOverlapFinal {
+    0% { opacity: 1; transform: translateX(8px); }
+    100% { opacity: 1; transform: translateX(0); }
   }
 }
