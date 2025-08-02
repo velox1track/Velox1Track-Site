@@ -1,0 +1,30 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom styles for the roulette wheel */
+@layer components {
+  .roulette-wheel-container {
+    @apply relative w-96 h-96;
+  }
+  
+  .roulette-wheel-image {
+    @apply w-full h-full object-contain transition-transform duration-3000 ease-out;
+  }
+  
+  .center-indicator {
+    @apply absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10;
+  }
+  
+  .spin-button {
+    @apply px-6 py-3 rounded-full font-bold text-sm uppercase tracking-wide transition-all duration-300 ease-in-out;
+  }
+  
+  .spin-button:disabled {
+    @apply bg-gray-300 text-gray-500 cursor-not-allowed;
+  }
+  
+  .spin-button:not(:disabled) {
+    @apply bg-velox-gray text-velox-dark hover:bg-velox-teal hover:text-white;
+  }
+} 

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - Velox 1</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@800&family=Roboto:wght@400;700&family=Roboto+Mono:wght@400&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="page-header">
+        <div class="header-container">
+            <a href="index.html" class="header-logo">
+                <img src="./images/logo_flat_.svg.svg" alt="Velox 1 Logo" class="header-logo-img">
+            </a>
+            <nav class="nav" role="navigation" aria-label="Main navigation">
+                <div class="nav-menu" id="nav-menu">
+                    <a href="index.html" class="nav-link">Home</a>
+                    <a href="format.html" class="nav-link">Format</a>
+                    <a href="schedule.html" class="nav-link">Schedule</a>
+                    <a href="contact.html" class="nav-link active">Contact</a>
+                    <button class="nav-cta" type="button">Join</button>
+                </div>
+                <button class="nav-toggle" type="button" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-menu">
+                    <div class="hamburger"></div>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Contact Form Section -->
+    <section class="contact-form-section">
+        <div class="container">
+            <div class="contact-content">
+                <div class="contact-form-container">
+                    <h2 class="section-title">Send us a message</h2>
+                    <p class="section-description">
+                        Have questions about Velox 1? Want to learn more about the Race Roulette format? We'd love to hear from you.
+                    </p>
+                    
+                    <form class="contact-form" id="contact-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="firstName" class="form-label">First Name</label>
+                                <input type="text" id="firstName" name="firstName" class="form-input" placeholder="Your First Name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="lastName" class="form-label">Last Name</label>
+                                <input type="text" id="lastName" name="lastName" class="form-input" placeholder="Your Last Name" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" id="email" name="email" class="form-input" placeholder="Your Email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="subject" class="form-label">Subject</label>
+                            <select id="subject" name="subject" class="form-input" required>
+                                <option value="">Select a subject</option>
+                                <option value="general">General Inquiry</option>
+                                <option value="format">Race Format Questions</option>
+                                <option value="schedule">Schedule Information</option>
+                                <option value="partnership">Partnership Opportunities</option>
+                                <option value="media">Media Inquiries</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message" class="form-label">Message</label>
+                            <textarea id="message" name="message" class="form-textarea" rows="6" placeholder="Tell us what's on your mind..." required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="submit-button">Send Message</button>
+                    </form>
+                </div>
+                
+                <div class="contact-info">
+                    <h3 class="info-title">Get in Touch</h3>
+                    <div class="info-items">
+                        <div class="info-item">
+                            <div class="info-content">
+                                <h4 class="info-label">Email</h4>
+                                <p class="info-text">velox1track@gmail.com</p>
+                            </div>
+                        </div>
+                        
+                        <div class="info-item">
+                            <div class="info-content">
+                                <h4 class="info-label">Phone</h4>
+                                <p class="info-text">+1 (651) 230-3019</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="social-links-compact">
+                        <h4 class="social-links-title">Follow Us</h4>
+                        <div class="social-icons">
+                            <a href="https://www.youtube.com/@velox1track" class="social-link external-link" target="_blank" rel="noopener noreferrer">
+                                <img src="./images/youtube.png" alt="YouTube" class="social-icon">
+                                <span>YouTube</span>
+                            </a>
+                            <a href="https://www.instagram.com/velox1track/" class="social-link external-link" target="_blank" rel="noopener noreferrer">
+                                <img src="./images/instagram.png" alt="Instagram" class="social-icon">
+                                <span>Instagram</span>
+                            </a>
+                            <a href="https://www.tiktok.com/@velox1track" class="social-link external-link" target="_blank" rel="noopener noreferrer">
+                                <img src="./images/tik-tok.png" alt="TikTok" class="social-icon">
+                                <span>TikTok</span>
+                            </a>
+                            <a href="https://x.com/velox1track" class="social-link external-link" target="_blank" rel="noopener noreferrer">
+                                <img src="./images/twitter.png" alt="X (Twitter)" class="social-icon">
+                                <span>X (Twitter)</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="page-footer">
+        <div class="container">
+            <div class="footer-content">
+                <img src="./images/logo_flat_.svg.svg" alt="Velox 1 Logo" class="footer-logo-img">
+                <div class="footer-links">
+                    <a href="index.html">Home</a>
+                    <a href="format.html">Format</a>
+                    <a href="schedule.html">Schedule</a>
+                    <a href="contact.html">Contact</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="Script.js"></script>
+</body>
+</html> 
