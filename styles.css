@@ -3892,22 +3892,22 @@ h1, h2, h3, h4 {
     @keyframes vFadeOut {
         0% {
             opacity: 1;
-            transform: translateX(30px);
+            transform: translateX(50px);
         }
         100% {
             opacity: 0;
-            transform: translateX(30px);
+            transform: translateX(50px);
         }
     }
 
     @keyframes oneFadeOut {
         0% {
             opacity: 1;
-            transform: translateX(-30px);
+            transform: translateX(-50px);
         }
         100% {
             opacity: 0;
-            transform: translateX(-30px);
+            transform: translateX(-50px);
         }
     }
 
@@ -3938,22 +3938,22 @@ h1, h2, h3, h4 {
     @keyframes vFadeOut {
         0% {
             opacity: 1;
-            transform: translateX(25px);
+            transform: translateX(40px);
         }
         100% {
             opacity: 0;
-            transform: translateX(25px);
+            transform: translateX(40px);
         }
     }
 
     @keyframes oneFadeOut {
         0% {
             opacity: 1;
-            transform: translateX(-25px);
+            transform: translateX(-40px);
         }
         100% {
             opacity: 0;
-            transform: translateX(-25px);
+            transform: translateX(-40px);
         }
     }
 
@@ -3964,7 +3964,7 @@ h1, h2, h3, h4 {
         }
         100% {
             opacity: 1;
-            transform: translateX(25px);
+            transform: translateX(40px);
         }
     }
 
@@ -3975,7 +3975,7 @@ h1, h2, h3, h4 {
         }
         100% {
             opacity: 1;
-            transform: translateX(-25px);
+            transform: translateX(-40px);
         }
     }
 }
@@ -4786,11 +4786,11 @@ h1, h2, h3, h4 {
 
   @keyframes vShiftToOverlapFinal {
     0% { opacity: 1; transform: translateX(0); }
-    100% { opacity: 1; transform: translateX(30px); }
+    100% { opacity: 1; transform: translateX(50px); }
   }
   @keyframes oneShiftToOverlapFinal {
     0% { opacity: 1; transform: translateX(0); }
-    100% { opacity: 1; transform: translateX(-30px); }
+    100% { opacity: 1; transform: translateX(-50px); }
   }
 }
 
