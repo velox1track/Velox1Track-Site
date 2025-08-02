@@ -4761,11 +4761,13 @@ h1, h2, h3, h4 {
     width: 120px;
     height: 125px;
     left: 0;
+    animation: vSlideInFromLeft 0.5s ease-in-out 0s forwards, vShiftToOverlap 0.4s ease-in-out 0.8s forwards, vShiftToOverlapFinal 0.4s ease-in-out 1.4s forwards, vFadeOut 0.3s ease-in-out 2.0s forwards;
   }
   .logo-1-separate {
     width: 120px;
     height: 125px;
     right: 0;
+    animation: oneSlideInFromRight 0.5s ease-in-out 0s forwards, oneShiftToOverlap 0.4s ease-in-out 0.8s forwards, oneShiftToOverlapFinal 0.4s ease-in-out 1.4s forwards, oneFadeOut 0.3s ease-in-out 2.0s forwards;
   }
   .logo-final {
     width: 250px;
@@ -4782,6 +4784,14 @@ h1, h2, h3, h4 {
     100% { opacity: 1; transform: translateX(10px); }
   }
   /* Mobile-specific overlap keyframes */
+  @keyframes vShiftToOverlap {
+    0% { opacity: 1; transform: translateX(-10px); }
+    100% { opacity: 1; transform: translateX(0); }
+  }
+  @keyframes oneShiftToOverlap {
+    0% { opacity: 1; transform: translateX(10px); }
+    100% { opacity: 1; transform: translateX(0); }
+  }
   @keyframes vShiftToOverlapFinal {
     0% { opacity: 1; transform: translateX(-10px); }
     100% { opacity: 1; transform: translateX(0); }
@@ -4797,11 +4807,13 @@ h1, h2, h3, h4 {
     width: 100px;
     height: 100px;
     left: 0;
+    animation: vSlideInFromLeft 0.5s ease-in-out 0s forwards, vShiftToOverlap 0.4s ease-in-out 0.8s forwards, vShiftToOverlapFinal 0.4s ease-in-out 1.4s forwards, vFadeOut 0.3s ease-in-out 2.0s forwards;
   }
   .logo-1-separate {
     width: 100px;
     height: 100px;
     right: 0;
+    animation: oneSlideInFromRight 0.5s ease-in-out 0s forwards, oneShiftToOverlap 0.4s ease-in-out 0.8s forwards, oneShiftToOverlapFinal 0.4s ease-in-out 1.4s forwards, oneFadeOut 0.3s ease-in-out 2.0s forwards;
   }
   .logo-final {
     width: 200px;
@@ -4817,6 +4829,14 @@ h1, h2, h3, h4 {
     100% { opacity: 1; transform: translateX(8px); }
   }
   /* Mobile-specific overlap keyframes */
+  @keyframes vShiftToOverlap {
+    0% { opacity: 1; transform: translateX(-8px); }
+    100% { opacity: 1; transform: translateX(0); }
+  }
+  @keyframes oneShiftToOverlap {
+    0% { opacity: 1; transform: translateX(8px); }
+    100% { opacity: 1; transform: translateX(0); }
+  }
   @keyframes vShiftToOverlapFinal {
     0% { opacity: 1; transform: translateX(-8px); }
     100% { opacity: 1; transform: translateX(0); }
