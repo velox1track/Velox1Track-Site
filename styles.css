@@ -3838,6 +3838,99 @@ h1, h2, h3, h4 {
     }
 }
 
+/* Mobile-specific animation keyframes */
+@media (max-width: 768px) {
+    @keyframes vFadeOut {
+        0% {
+            opacity: 1;
+            transform: translateX(30px);
+        }
+        100% {
+            opacity: 0;
+            transform: translateX(30px);
+        }
+    }
+
+    @keyframes oneFadeOut {
+        0% {
+            opacity: 1;
+            transform: translateX(-30px);
+        }
+        100% {
+            opacity: 0;
+            transform: translateX(-30px);
+        }
+    }
+
+    @keyframes vShiftToOverlapFinal {
+        0% {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        100% {
+            opacity: 1;
+            transform: translateX(30px);
+        }
+    }
+
+    @keyframes oneShiftToOverlapFinal {
+        0% {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        100% {
+            opacity: 1;
+            transform: translateX(-30px);
+        }
+    }
+}
+
+@media (max-width: 600px) {
+    @keyframes vFadeOut {
+        0% {
+            opacity: 1;
+            transform: translateX(25px);
+        }
+        100% {
+            opacity: 0;
+            transform: translateX(25px);
+        }
+    }
+
+    @keyframes oneFadeOut {
+        0% {
+            opacity: 1;
+            transform: translateX(-25px);
+        }
+        100% {
+            opacity: 0;
+            transform: translateX(-25px);
+        }
+    }
+
+    @keyframes vShiftToOverlapFinal {
+        0% {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        100% {
+            opacity: 1;
+            transform: translateX(25px);
+        }
+    }
+
+    @keyframes oneShiftToOverlapFinal {
+        0% {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        100% {
+            opacity: 1;
+            transform: translateX(-25px);
+        }
+    }
+}
+
 /* Responsive adjustments for Logo Animation V2 */
 @media (max-width: 768px) {
     .logo-animation-v2 {
@@ -3856,13 +3949,13 @@ h1, h2, h3, h4 {
     .logo-v-separate {
         width: 120px;
         height: 125px;
-        left: 10px;
+        left: 0;
     }
     
     .logo-1-separate {
         width: 120px;
         height: 125px;
-        right: 10px;
+        right: 0;
     }
     
     .logo-v-overlap,
@@ -3897,13 +3990,13 @@ h1, h2, h3, h4 {
     .logo-v-separate {
         width: 100px;
         height: 100px;
-        left: 8px;
+        left: 0;
     }
     
     .logo-1-separate {
         width: 100px;
         height: 100px;
-        right: 8px;
+        right: 0;
     }
     
     .logo-v-overlap,
@@ -4596,4 +4689,19 @@ h1, h2, h3, h4 {
     margin: 0 auto;
     display: block;
   }
+}
+
+@media (max-width: 768px) {
+    .logo-final {
+        width: 120px;
+        height: 125px;
+        left: 50px;
+    }
+}
+@media (max-width: 600px) {
+    .logo-final {
+        width: 100px;
+        height: 100px;
+        left: 40px;
+    }
 }
