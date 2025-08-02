@@ -29,25 +29,41 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // Smooth scrolling for navigation links
+    // Handle navigation links - allow external page navigation
     const navLinks = document.querySelectorAll('.nav-link');
     navLinks.forEach(link => {
         link.addEventListener('click', function(e) {
-            e.preventDefault();
-            const targetId = this.getAttribute('href');
-            const targetSection = document.querySelector(targetId);
+            const href = this.getAttribute('href');
             
-            if (targetSection) {
-                // Close mobile menu if open
+            // Check if it's an external page link (contains .html)
+            if (href && href.includes('.html')) {
+                // Allow normal navigation to external pages
+                // Just close mobile menu if open
                 if (navToggle && navMenu) {
                     navToggle.setAttribute('aria-expanded', 'false');
                     navMenu.classList.remove('active');
                 }
+                // Don't prevent default - let the link work normally
+                return;
+            }
+            
+            // For internal page anchors (starting with #), handle smooth scrolling
+            if (href && href.startsWith('#')) {
+                e.preventDefault();
+                const targetSection = document.querySelector(href);
                 
-                targetSection.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
+                if (targetSection) {
+                    // Close mobile menu if open
+                    if (navToggle && navMenu) {
+                        navToggle.setAttribute('aria-expanded', 'false');
+                        navMenu.classList.remove('active');
+                    }
+                    
+                    targetSection.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
             }
         });
     });
@@ -451,14 +467,21 @@ document.addEventListener('DOMContentLoaded', function() {
             }
             
             // Create intersection observer
+            let logoAnimationStartTimeout = null;
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting && !this.isAnimating) {
-                        // Logo is in view, start animation
-                        this.startAnimation();
+                        // Logo is in view, start animation after a delay
+                        logoAnimationStartTimeout = setTimeout(() => {
+                            this.startAnimation();
+                        }, 1000); // 1000ms delay
                     } else if (!entry.isIntersecting && this.isAnimating) {
                         // Logo is out of view, stop animation
                         this.stopAnimation();
+                    } else if (!entry.isIntersecting && logoAnimationStartTimeout) {
+                        // If user scrolls away before delay, clear timeout
+                        clearTimeout(logoAnimationStartTimeout);
+                        logoAnimationStartTimeout = null;
                     }
                 });
             }, {
