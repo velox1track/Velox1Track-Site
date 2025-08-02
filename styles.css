@@ -4770,9 +4770,9 @@ h1, h2, h3, h4 {
     animation: oneSlideInFromRight 0.5s ease-in-out 0s forwards, oneShiftToOverlap 0.4s ease-in-out 0.8s forwards, oneShiftToOverlapFinal 0.4s ease-in-out 1.4s forwards, oneFadeOut 0.3s ease-in-out 2.0s forwards;
   }
   .logo-final {
-    width: 250px;
+    width: 240px;
     height: 125px;
-    left: 0;
+    left: 5px;
   }
   /* Mobile-specific keyframes for side-by-side effect */
   @keyframes vSlideInFromLeft {
@@ -4786,11 +4786,11 @@ h1, h2, h3, h4 {
   /* Mobile-specific overlap keyframes */
   @keyframes vShiftToOverlap {
     0% { opacity: 1; transform: translateX(-10px); }
-    100% { opacity: 1; transform: translateX(0); }
+    100% { opacity: 1; transform: translateX(-10px); }
   }
   @keyframes oneShiftToOverlap {
     0% { opacity: 1; transform: translateX(10px); }
-    100% { opacity: 1; transform: translateX(0); }
+    100% { opacity: 1; transform: translateX(10px); }
   }
   @keyframes vShiftToOverlapFinal {
     0% { opacity: 1; transform: translateX(-10px); }
@@ -4818,7 +4818,7 @@ h1, h2, h3, h4 {
   .logo-final {
     width: 200px;
     height: 100px;
-    left: 0;
+    left: 0px;
   }
   @keyframes vSlideInFromLeft {
     0% { opacity: 1; transform: translateX(-100%); }
@@ -4831,11 +4831,11 @@ h1, h2, h3, h4 {
   /* Mobile-specific overlap keyframes */
   @keyframes vShiftToOverlap {
     0% { opacity: 1; transform: translateX(-8px); }
-    100% { opacity: 1; transform: translateX(0); }
+    100% { opacity: 1; transform: translateX(-8px); }
   }
   @keyframes oneShiftToOverlap {
     0% { opacity: 1; transform: translateX(8px); }
-    100% { opacity: 1; transform: translateX(0); }
+    100% { opacity: 1; transform: translateX(8px); }
   }
   @keyframes vShiftToOverlapFinal {
     0% { opacity: 1; transform: translateX(-8px); }
