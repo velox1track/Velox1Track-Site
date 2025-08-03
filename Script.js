@@ -293,13 +293,11 @@ document.addEventListener('DOMContentLoaded', function() {
         }, interval);
     }
     
-    // Contact form submission
+    // Contact form submission (Formspree)
     const contactForm = document.querySelector('.contact-form');
     if (contactForm) {
         contactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Get form data
+            // Get form data for validation
             const formData = new FormData(this);
             const firstName = formData.get('firstName');
             const lastName = formData.get('lastName');
@@ -309,6 +307,7 @@ document.addEventListener('DOMContentLoaded', function() {
             
             // Basic validation
             if (!firstName || !lastName || !email || !subject || !message) {
+                e.preventDefault();
                 alert('Please fill in all fields.');
                 return;
             }
@@ -316,31 +315,40 @@ document.addEventListener('DOMContentLoaded', function() {
             // Email validation
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             if (!emailRegex.test(email)) {
+                e.preventDefault();
                 alert('Please enter a valid email address.');
                 return;
             }
             
-            // Show success message
-            alert(`Thank you for your message, ${firstName}! We'll get back to you soon.`);
+            // Show loading state
+            const submitButton = this.querySelector('button[type="submit"]');
+            const originalText = submitButton.textContent;
+            submitButton.textContent = 'Sending...';
+            submitButton.disabled = true;
             
-            // Reset form
-            this.reset();
+            // Allow the form to submit to Formspree
+            // Formspree will handle the submission and show success message
+            // We'll reset the form after Formspree processes it
+            setTimeout(() => {
+                this.reset();
+                submitButton.textContent = originalText;
+                submitButton.disabled = false;
+            }, 3000);
         });
     }
     
-    // Stay Updated form submission
+    // Stay Updated form submission (Formspree)
     const stayUpdatedForm = document.querySelector('#stay-updated-form');
     if (stayUpdatedForm) {
-        stayUpdatedForm.addEventListener('submit', async function(e) {
-            e.preventDefault();
-            
-            // Get form data
+        stayUpdatedForm.addEventListener('submit', function(e) {
+            // Get form data for validation
             const formData = new FormData(this);
             const name = formData.get('name');
             const email = formData.get('email');
             
             // Basic validation
             if (!name || !email) {
+                e.preventDefault();
                 alert('Please fill in both name and email fields.');
                 return;
             }
@@ -348,6 +356,7 @@ document.addEventListener('DOMContentLoaded', function() {
             // Email validation
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             if (!emailRegex.test(email)) {
+                e.preventDefault();
                 alert('Please enter a valid email address.');
                 return;
             }
@@ -358,36 +367,14 @@ document.addEventListener('DOMContentLoaded', function() {
             submitButton.textContent = 'Subscribing...';
             submitButton.disabled = true;
             
-            try {
-                // Send data to backend
-                const response = await fetch('/api/subscribe', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({ name, email })
-                });
-                
-                const result = await response.json();
-                
-                if (result.success) {
-                    alert(`Thank you for signing up, ${name}! You'll be notified about future events and league updates.`);
-                    this.reset();
-                } else {
-                    if (response.status === 409) {
-                        alert('This email is already subscribed to our updates.');
-                    } else {
-                        alert('Failed to subscribe. Please try again.');
-                    }
-                }
-            } catch (error) {
-                console.error('Error submitting form:', error);
-                alert('Failed to subscribe. Please check your connection and try again.');
-            } finally {
-                // Reset button state
+            // Allow the form to submit to Formspree
+            // Formspree will handle the submission and show success message
+            // We'll reset the form after Formspree processes it
+            setTimeout(() => {
+                this.reset();
                 submitButton.textContent = originalText;
                 submitButton.disabled = false;
-            }
+            }, 3000);
         });
     }
     
