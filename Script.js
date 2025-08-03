@@ -453,15 +453,19 @@ document.addEventListener('DOMContentLoaded', function() {
                 return;
             }
             
-            // Create intersection observer
+            // Create intersection observer with optimized timing
             let logoAnimationStartTimeout = null;
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting && !this.isAnimating) {
                         // Logo is in view, start animation after a delay
+                        // Shorter delay for mobile, longer for desktop
+                        const isMobile = window.innerWidth <= 768;
+                        const delay = isMobile ? 500 : 800; // 500ms mobile, 800ms desktop
+                        
                         logoAnimationStartTimeout = setTimeout(() => {
                             this.startAnimation();
-                        }, 1000); // 1000ms delay
+                        }, delay);
                     } else if (!entry.isIntersecting && this.isAnimating) {
                         // Logo is out of view, stop animation
                         this.stopAnimation();
@@ -472,8 +476,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     }
                 });
             }, {
-                threshold: 0.3, // Trigger when 30% of the logo is visible
-                rootMargin: '0px 0px -50px 0px' // Trigger slightly before the logo is fully in view
+                threshold: 0.4, // Trigger when 40% of the logo is visible (better visibility)
+                rootMargin: '0px 0px -100px 0px' // Trigger earlier for better timing
             });
             
             // Start observing the logo container
@@ -669,13 +673,27 @@ document.addEventListener('DOMContentLoaded', function() {
         // Add cursor pointer to indicate clickability
         logoContainer.style.cursor = 'pointer';
         
-        // Add hover effect
+        // Add hover effect with subtle animation hint
         logoContainer.addEventListener('mouseenter', function() {
-            this.style.opacity = '0.8';
+            this.style.opacity = '0.9';
+            this.style.transform = 'scale(1.02)';
+            this.style.transition = 'opacity 0.2s ease, transform 0.2s ease';
         });
         
         logoContainer.addEventListener('mouseleave', function() {
             this.style.opacity = '1';
+            this.style.transform = 'scale(1)';
+        });
+        
+        // Add touch feedback for mobile
+        logoContainer.addEventListener('touchstart', function() {
+            this.style.opacity = '0.8';
+            this.style.transform = 'scale(0.98)';
+        });
+        
+        logoContainer.addEventListener('touchend', function() {
+            this.style.opacity = '1';
+            this.style.transform = 'scale(1)';
         });
         
         console.log('Click event listener added to logo container');
