@@ -20,7 +20,7 @@
                     <a href="format.html" class="nav-link">Format</a>
                     <a href="schedule.html" class="nav-link">Schedule</a>
                     <a href="contact.html" class="nav-link">Contact</a>
-                    <button class="nav-cta" type="button">Join</button>
+                    <button class="nav-cta" type="button" id="nav-stay-updated">Stay Updated</button>
                 </div>
                 <button class="nav-toggle" type="button" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-menu">
                     <div class="hamburger"></div>
@@ -38,7 +38,7 @@
                 <div class="hero-title-block">
                     <h1 class="hero-title">Faster isn't Enough</h1>
                     <p class="hero-subtitle">Experience the future of track & field competition</p>
-                    <a href="https://form.jotform.com/251528400007041" class="hero-cta-button" target="_blank">Join August 9th Trial</a>
+                    <button class="hero-cta-button" id="hero-cta-button">Stay Updated</button>
     </div>
     </div>
 
@@ -129,7 +129,7 @@
             <div class="join-content">
                 <div class="join-form-section">
                     <form class="join-form" id="stay-updated-form" action="https://formspree.io/f/xrblajqg" method="POST">
-                        <p class="form-subtitle">Get notified about future events and league updates</p>
+                        <p class="form-subtitle">Be the first to know about upcoming competitions, exclusive early access, and special member benefits</p>
                         
                         <div class="form-group">
                             <label for="name" class="form-label">Name</label>
@@ -141,12 +141,12 @@
                             <input type="email" id="email" name="email" class="form-input" placeholder="Your Email" required>
                         </div>
 
-                        <button type="submit" class="trial-signup-button">Stay Updated</button>
+                        <button type="submit" class="stay-updated-button">Stay Updated</button>
                     </form>
                 </div>
                 
                 <div class="social-section">
-                    <h3 class="social-title">Connect With Us</h3>
+                    <h3 class="social-title">Follow Us</h3>
                     <div class="social-links">
                         <a href="https://www.youtube.com/@velox1track" class="social-link external-link" target="_blank" rel="noopener noreferrer">
                             <img src="./images/youtube.png" alt="YouTube" class="social-icon">
@@ -185,6 +185,32 @@
         </div>
     </footer>
     
+    <!-- Modal for Stay Updated Form -->
+    <div class="modal-overlay" id="stay-updated-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Be First to Updates</h3>
+                <button class="modal-close" id="modal-close" aria-label="Close modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p class="modal-subtitle">Get notified about future events and league updates</p>
+                <form class="modal-form" id="modal-stay-updated-form" action="https://formspree.io/f/xrblajqg" method="POST">
+                    <div class="form-group">
+                        <label for="modal-name" class="form-label">Name</label>
+                        <input type="text" id="modal-name" name="name" class="form-input" placeholder="Your Name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="modal-email" class="form-label">Email</label>
+                        <input type="email" id="modal-email" name="email" class="form-input" placeholder="Your Email" required>
+                    </div>
+
+                    <button type="submit" class="modal-submit-button">Stay Updated</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
     <script src="Script.js"></script>
 </body>
 </html>

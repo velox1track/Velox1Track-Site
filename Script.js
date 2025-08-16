@@ -708,4 +708,106 @@ document.addEventListener('DOMContentLoaded', function() {
     } else {
         console.log('Logo animation disabled - elements not found');
     }
+    
+    // Modal Functionality for Stay Updated Form
+    const modal = document.getElementById('stay-updated-modal');
+    const modalOpenButton = document.getElementById('hero-cta-button');
+    const navStayUpdatedButton = document.getElementById('nav-stay-updated');
+    const modalCloseButton = document.getElementById('modal-close');
+    const modalForm = document.getElementById('modal-stay-updated-form');
+    
+    // Open modal when hero CTA button is clicked
+    if (modalOpenButton && modal) {
+        modalOpenButton.addEventListener('click', function() {
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        });
+    }
+    
+    // Open modal when nav CTA button is clicked
+    if (navStayUpdatedButton && modal) {
+        navStayUpdatedButton.addEventListener('click', function() {
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        });
+    }
+    
+    // Close modal when close button is clicked
+    if (modalCloseButton && modal) {
+        modalCloseButton.addEventListener('click', function() {
+            modal.classList.remove('active');
+            document.body.style.overflow = ''; // Restore scrolling
+        });
+    }
+    
+    // Close modal when clicking outside the modal content
+    if (modal) {
+        modal.addEventListener('click', function(e) {
+            if (e.target === modal) {
+                modal.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+    }
+    
+    // Close modal with Escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && modal && modal.classList.contains('active')) {
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    });
+    
+    // Handle modal form submission
+    if (modalForm) {
+        modalForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data for validation
+            const formData = new FormData(this);
+            const name = formData.get('name');
+            const email = formData.get('email');
+            
+            // Basic validation
+            if (!name || !email) {
+                alert('Please fill in all required fields.');
+                return;
+            }
+            
+            if (!email.includes('@')) {
+                alert('Please enter a valid email address.');
+                return;
+            }
+            
+            // Submit to Formspree
+            fetch(this.action, {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            })
+            .then(response => {
+                if (response.ok) {
+                    // Show success message
+                    alert('Thank you! You\'ve been added to our mailing list.');
+                    
+                    // Reset form
+                    this.reset();
+                    
+                    // Close modal
+                    if (modal) {
+                        modal.classList.remove('active');
+                        document.body.style.overflow = '';
+                    }
+                } else {
+                    throw new Error('Network response was not ok');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('There was an error submitting your information. Please try again.');
+            });
+        });
+    }
 });

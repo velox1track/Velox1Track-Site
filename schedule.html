@@ -20,7 +20,7 @@
                     <a href="format.html" class="nav-link">Format</a>
                     <a href="schedule.html" class="nav-link active">Schedule</a>
                     <a href="contact.html" class="nav-link">Contact</a>
-                    <button class="nav-cta" type="button">Join</button>
+                    <button class="nav-cta" type="button" id="nav-stay-updated">Stay Updated</button>
                 </div>
                 <button class="nav-toggle" type="button" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-menu">
                     <div class="hamburger"></div>
@@ -45,7 +45,7 @@
                         <p class="event-description">20655 Flagstaff Ave, Farmington, MN 55024 • Saturday, August 9th • 1:30–3:00 PM</p>
                     </div>
                     <div class="event-status">
-                        <span class="status-badge upcoming">Trial Event</span>
+                        <span class="status-badge completed">Completed</span>
                     </div>
                 </div>
 
@@ -57,7 +57,7 @@
                     <div class="event-details">
                         <h3 class="event-title">Future Competitions</h3>
                         <p class="event-location">Coming to Cities Near You</p>
-                        <p class="event-description">As Velox 1 grows, we plan to host competitions across the country. Join our community to be the first to know about new events, or let us know if you'd like to bring Velox 1 to your city.</p>
+                        <p class="event-description">Our trial event was a huge success! We're now planning the next phase of Velox 1 competitions. Join our community to be the first to know about new events, exclusive early access, and special member benefits.</p>
                     </div>
                     <div class="event-status">
                         <span class="status-badge upcoming">Coming Soon</span>
@@ -81,6 +81,32 @@
             </div>
         </div>
     </footer>
+
+    <!-- Modal for Stay Updated Form -->
+    <div class="modal-overlay" id="stay-updated-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Be First to Updates</h3>
+                <button class="modal-close" id="modal-close" aria-label="Close modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p class="modal-subtitle">Get notified about future events and league updates</p>
+                <form class="modal-form" id="modal-stay-updated-form" action="https://formspree.io/f/xrblajqg" method="POST">
+                    <div class="form-group">
+                        <label for="modal-name" class="form-label">Name</label>
+                        <input type="text" id="modal-name" name="name" class="form-input" placeholder="Your Name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="modal-email" class="form-label">Email</label>
+                        <input type="email" id="modal-email" name="email" class="form-input" placeholder="Your Email" required>
+                    </div>
+
+                    <button type="submit" class="modal-submit-button">Stay Updated</button>
+                </form>
+            </div>
+        </div>
+    </div>
 
     <script src="Script.js"></script>
 </body>
