@@ -3620,11 +3620,12 @@ h1, h2, h3, h4 {
 /* Logo Animation V2 Styles */
 .logo-animation-v2-container {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     margin: 60px 0;
-    height: 200px;
-    cursor: pointer;
+    height: auto;
+    min-height: 200px;
     transition: opacity 0.3s ease;
     user-select: none;
     -webkit-user-select: none;
@@ -3633,11 +3634,80 @@ h1, h2, h3, h4 {
 }
 
 .logo-animation-v2-container:hover {
-    opacity: 0.8;
+    opacity: 1; /* Remove hover effect since logo is no longer clickable */
 }
 
-.logo-animation-v2-container:active {
-    opacity: 0.6;
+/* Replay Animation Button Styles */
+.replay-animation-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: linear-gradient(135deg, #64E2D3 0%, #4BC3B5 100%);
+    color: white;
+    border: none;
+    border-radius: 25px;
+    padding: 10px 20px;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 25px;
+    box-shadow: 0 4px 15px rgba(100, 226, 211, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.replay-animation-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(100, 226, 211, 0.4);
+    background: linear-gradient(135deg, #5DD1C2 0%, #42B2A4 100%);
+}
+
+.replay-animation-btn:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 10px rgba(100, 226, 211, 0.3);
+}
+
+.replay-animation-btn:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(100, 226, 211, 0.3);
+}
+
+.replay-icon {
+    width: 16px;
+    height: 16px;
+    transition: transform 0.3s ease;
+}
+
+.replay-animation-btn:hover .replay-icon {
+    transform: rotate(180deg);
+}
+
+/* Mobile responsive adjustments for replay button */
+@media (max-width: 768px) {
+    .replay-animation-btn {
+        font-size: 13px;
+        padding: 8px 16px;
+        margin-top: 15px;
+        letter-spacing: 0.3px;
+    }
+    
+    .replay-icon {
+        width: 14px;
+        height: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .replay-animation-btn {
+        font-size: 12px;
+        padding: 6px 14px;
+        margin-top: 12px;
+        letter-spacing: 0.2px;
+    }
 }
 
 .logo-animation-v2 {

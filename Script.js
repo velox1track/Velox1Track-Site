@@ -649,14 +649,14 @@ document.addEventListener('DOMContentLoaded', function() {
         container: document.querySelector('.logo-animation-v2-container')
     });
     
-    // Always add click functionality regardless of animation state
-    const logoContainer = document.querySelector('.logo-animation-v2-container');
-    console.log('Logo container found:', logoContainer);
+    // Add replay button functionality
+    const replayButton = document.getElementById('replay-animation-btn');
+    console.log('Replay button found:', replayButton);
     
-    if (logoContainer) {
+    if (replayButton) {
         // Add click functionality to replay animation
-        logoContainer.addEventListener('click', function(e) {
-            console.log('Logo clicked - replaying animation', e);
+        replayButton.addEventListener('click', function(e) {
+            console.log('Replay button clicked - replaying animation', e);
             e.preventDefault();
             e.stopPropagation();
             
@@ -668,26 +668,9 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
         
-        // Add cursor pointer to indicate clickability
-        logoContainer.style.cursor = 'pointer';
-        
-        // Add hover effect with subtle animation hint
-        logoContainer.addEventListener('mouseenter', function() {
-            this.style.opacity = '0.9';
-            this.style.transform = 'scale(1.02)';
-            this.style.transition = 'opacity 0.2s ease, transform 0.2s ease';
-        });
-        
-        logoContainer.addEventListener('mouseleave', function() {
-            this.style.opacity = '1';
-            this.style.transform = 'scale(1)';
-        });
-        
-
-        
-        console.log('Click event listener added to logo container');
+        console.log('Click event listener added to replay button');
     } else {
-        console.log('Logo container not found');
+        console.log('Replay button not found');
     }
     
     // Initialize animation if elements exist
