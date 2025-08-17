@@ -459,9 +459,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 entries.forEach(entry => {
                     if (entry.isIntersecting && !this.isAnimating) {
                         // Logo is in view, start animation after a delay
-                        // Shorter delay for mobile, longer for desktop
-                        const isMobile = window.innerWidth <= 768;
-                        const delay = isMobile ? 500 : 800; // 500ms mobile, 800ms desktop
+                        const delay = 800; // 800ms delay for desktop
                         
                         logoAnimationStartTimeout = setTimeout(() => {
                             this.startAnimation();
@@ -685,16 +683,7 @@ document.addEventListener('DOMContentLoaded', function() {
             this.style.transform = 'scale(1)';
         });
         
-        // Add touch feedback for mobile
-        logoContainer.addEventListener('touchstart', function() {
-            this.style.opacity = '0.8';
-            this.style.transform = 'scale(0.98)';
-        });
-        
-        logoContainer.addEventListener('touchend', function() {
-            this.style.opacity = '1';
-            this.style.transform = 'scale(1)';
-        });
+
         
         console.log('Click event listener added to logo container');
     } else {

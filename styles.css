@@ -3656,7 +3656,7 @@ h1, h2, h3, h4 {
     top: 0;
     opacity: 1;
     transform: translateX(-100%);
-    z-index: 2;
+    z-index: 3; /* V logo (teal) always in front */
     animation: vSlideInFromLeft 0.5s ease-in-out 0s forwards, vShiftToOverlap 0.4s ease-in-out 0.8s forwards, vShiftToOverlapFinal 0.4s ease-in-out 1.4s forwards, vFadeOut 0.3s ease-in-out 2.0s forwards;
 }
 
@@ -3668,7 +3668,7 @@ h1, h2, h3, h4 {
     top: 0;
     opacity: 1;
     transform: translateX(100%);
-    z-index: 1;
+    z-index: 2; /* 1 logo (gray) behind V logo */
     animation: oneSlideInFromRight 0.5s ease-in-out 0s forwards, oneShiftToOverlap 0.4s ease-in-out 0.8s forwards, oneShiftToOverlapFinal 0.4s ease-in-out 1.4s forwards, oneFadeOut 0.3s ease-in-out 2.0s forwards;
 }
 
@@ -3681,6 +3681,7 @@ h1, h2, h3, h4 {
     top: 0;
     opacity: 0;
     display: none; /* Hide for now */
+    z-index: 3; /* V logo (teal) in front */
     animation: vOverlapAppear 0.8s ease-in-out 0.8s forwards;
 }
 
@@ -3692,6 +3693,7 @@ h1, h2, h3, h4 {
     top: 0;
     opacity: 0;
     display: none; /* Hide for now */
+    z-index: 2; /* 1 logo (gray) behind V logo */
     animation: oneOverlapAppear 0.8s ease-in-out 0.8s forwards;
 }
 
@@ -3742,54 +3744,7 @@ h1, h2, h3, h4 {
     }
 }
 
-/* Mobile-specific slide-in keyframes to prevent crossing */
-@media (max-width: 768px) {
-    @keyframes vSlideInFromLeft {
-        0% {
-            opacity: 1;
-            transform: translateX(-100%);
-        }
-        100% {
-            opacity: 1;
-            transform: translateX(0);
-        }
-    }
 
-    @keyframes oneSlideInFromRight {
-        0% {
-            opacity: 1;
-            transform: translateX(100%);
-        }
-        100% {
-            opacity: 1;
-            transform: translateX(0);
-        }
-    }
-}
-
-@media (max-width: 600px) {
-    @keyframes vSlideInFromLeft {
-        0% {
-            opacity: 1;
-            transform: translateX(-100%);
-        }
-        100% {
-            opacity: 1;
-            transform: translateX(0);
-        }
-    }
-
-    @keyframes oneSlideInFromRight {
-        0% {
-            opacity: 1;
-            transform: translateX(100%);
-        }
-        100% {
-            opacity: 1;
-            transform: translateX(0);
-        }
-    }
-}
 
 @keyframes vOverlapAppear {
     0% {
@@ -3897,181 +3852,10 @@ h1, h2, h3, h4 {
     }
 }
 
-/* Mobile-specific animation keyframes */
-@media (max-width: 768px) {
-    @keyframes vFadeOut {
-        0% {
-            opacity: 1;
-            transform: translateX(50px);
-        }
-        100% {
-            opacity: 0;
-            transform: translateX(50px);
-        }
-    }
 
-    @keyframes oneFadeOut {
-        0% {
-            opacity: 1;
-            transform: translateX(-50px);
-        }
-        100% {
-            opacity: 0;
-            transform: translateX(-50px);
-        }
-    }
 
-    @keyframes vShiftToOverlapFinal {
-        0% {
-            opacity: 1;
-            transform: translateX(0);
-        }
-        100% {
-            opacity: 1;
-            transform: translateX(30px);
-        }
-    }
 
-    @keyframes oneShiftToOverlapFinal {
-        0% {
-            opacity: 1;
-            transform: translateX(0);
-        }
-        100% {
-            opacity: 1;
-            transform: translateX(-30px);
-        }
-    }
-}
 
-@media (max-width: 600px) {
-    @keyframes vFadeOut {
-        0% {
-            opacity: 1;
-            transform: translateX(40px);
-        }
-        100% {
-            opacity: 0;
-            transform: translateX(40px);
-        }
-    }
-
-    @keyframes oneFadeOut {
-        0% {
-            opacity: 1;
-            transform: translateX(-40px);
-        }
-        100% {
-            opacity: 0;
-            transform: translateX(-40px);
-        }
-    }
-
-    @keyframes vShiftToOverlapFinal {
-        0% {
-            opacity: 1;
-            transform: translateX(0);
-        }
-        100% {
-            opacity: 1;
-            transform: translateX(40px);
-        }
-    }
-
-    @keyframes oneShiftToOverlapFinal {
-        0% {
-            opacity: 1;
-            transform: translateX(0);
-        }
-        100% {
-            opacity: 1;
-            transform: translateX(-40px);
-        }
-    }
-}
-
-/* Responsive adjustments for Logo Animation V2 */
-@media (max-width: 768px) {
-    .logo-animation-v2 {
-        width: 250px;
-        height: 125px;
-    }
-    
-    .logo-animation-v2-container {
-        margin: 40px 0;
-        height: 150px;
-        /* Enhanced touch feedback for mobile */
-        -webkit-tap-highlight-color: rgba(0, 0, 0, 0.1);
-        touch-action: manipulation;
-    }
-    
-    .logo-v-separate {
-        width: 120px;
-        height: 125px;
-        left: 0;
-    }
-    
-    .logo-1-separate {
-        width: 120px;
-        height: 125px;
-        right: 0;
-    }
-    
-    .logo-v-overlap,
-    .logo-1-overlap,
-    .logo-part3 {
-        width: 250px;
-        height: 125px;
-        left: 0;
-    }
-    
-    .logo-final {
-        width: 250px;
-        height: 125px;
-        left: 0;
-    }
-}
-
-@media (max-width: 600px) {
-    .logo-animation-v2 {
-        width: 200px;
-        height: 100px;
-    }
-    
-    .logo-animation-v2-container {
-        margin: 30px 0;
-        height: 120px;
-        /* Enhanced touch feedback for mobile */
-        -webkit-tap-highlight-color: rgba(0, 0, 0, 0.1);
-        touch-action: manipulation;
-    }
-    
-    .logo-v-separate {
-        width: 100px;
-        height: 100px;
-        left: 0;
-    }
-    
-    .logo-1-separate {
-        width: 100px;
-        height: 100px;
-        right: 0;
-    }
-    
-    .logo-v-overlap,
-    .logo-1-overlap,
-    .logo-part3 {
-        width: 200px;
-        height: 100px;
-        left: 0;
-    }
-    
-    .logo-final {
-        width: 200px;
-        height: 100px;
-        left: 0;
-    }
-}
 
 /* About Section Styles */
 .about {
@@ -4723,195 +4507,9 @@ h1, h2, h3, h4 {
     width: 100%;
 }
 
-@media (max-width: 768px) {
-  .logo-animation-v2-container {
-    margin: 24px auto 0 auto;
-    text-align: center;
-    width: 100%;
-    max-width: 100vw;
-  }
-  .logo-animation-v2 {
-    width: 250px;
-    height: 125px;
-    margin: 0 auto;
-    display: inline-block;
-  }
-  .logo-v-separate {
-    width: 140px;
-    height: 150px;
-    left: 20px;
-    top: 0;
-    opacity: 1;
-    transform: translateX(-100%);
-    z-index: 1;
-    animation: vSlideInFromLeft 0.5s ease-in-out 0s forwards, vShiftToOverlap 0.4s ease-in-out 0.8s forwards, vShiftToOverlapFinal 0.4s ease-in-out 1.4s forwards, vFadeOut 0.3s ease-in-out 2.0s forwards;
-  }
-  
-  .logo-1-separate {
-    width: 140px;
-    height: 150px;
-    right: 20px;
-    top: 0;
-    opacity: 1;
-    transform: translateX(100%);
-    z-index: 1;
-    animation: oneSlideInFromRight 0.5s ease-in-out 0s forwards, oneShiftToOverlap 0.4s ease-in-out 0.8s forwards, oneShiftToOverlapFinal 0.4s ease-in-out 1.4s forwards, oneFadeOut 0.3s ease-in-out 2.0s forwards;
-  }
-  
-  .logo-v-overlap,
-  .logo-1-overlap,
-  .logo-part3 {
-    width: 300px;
-    height: 150px;
-    left: 0;
-  }
-  
-  .logo-final {
-    width: 140px;
-    height: 150px;
-    left: 80px;
-    top: 0;
-    opacity: 0;
-    z-index: 3;
-    animation: finalLogoCrossfade 0.3s ease-in-out 2.0s forwards;
-  }
-  
-  /* Mobile-specific keyframes that match desktop behavior */
-  @keyframes vSlideInFromLeft {
-    0% { opacity: 1; transform: translateX(-100%); }
-    100% { opacity: 1; transform: translateX(0); }
-  }
-  
-  @keyframes oneSlideInFromRight {
-    0% { opacity: 1; transform: translateX(100%); }
-    100% { opacity: 1; transform: translateX(0); }
-  }
-  
-  @keyframes vShiftToOverlap {
-    0% { opacity: 1; transform: translateX(0); }
-    100% { opacity: 1; transform: translateX(0); }
-  }
-  
-  @keyframes oneShiftToOverlap {
-    0% { opacity: 1; transform: translateX(0); }
-    100% { opacity: 1; transform: translateX(0); }
-  }
-  
-  @keyframes vShiftToOverlapFinal {
-    0% { opacity: 1; transform: translateX(0); }
-    100% { opacity: 1; transform: translateX(60px); }
-  }
-  
-  @keyframes oneShiftToOverlapFinal {
-    0% { opacity: 1; transform: translateX(0); }
-    100% { opacity: 1; transform: translateX(-60px); }
-  }
-  
-  @keyframes vFadeOut {
-    0% { opacity: 1; transform: translateX(60px); }
-    100% { opacity: 0; transform: translateX(60px); }
-  }
-  
-  @keyframes oneFadeOut {
-    0% { opacity: 1; transform: translateX(-60px); }
-    100% { opacity: 0; transform: translateX(-60px); }
-  }
-}
 
-@media (max-width: 600px) {
-  .logo-animation-v2 {
-    width: 200px;
-    height: 100px;
-  }
-  
-  .logo-animation-v2-container {
-    margin: 30px 0;
-    height: 120px;
-    -webkit-tap-highlight-color: rgba(0, 0, 0, 0.1);
-    touch-action: manipulation;
-  }
-  
-  .logo-v-separate {
-    width: 100px;
-    height: 100px;
-    left: 10px;
-    top: 0;
-    opacity: 1;
-    transform: translateX(-100%);
-    z-index: 1;
-    animation: vSlideInFromLeft 0.5s ease-in-out 0s forwards, vShiftToOverlap 0.4s ease-in-out 0.8s forwards, vShiftToOverlapFinal 0.4s ease-in-out 1.4s forwards, vFadeOut 0.3s ease-in-out 2.0s forwards;
-  }
-  
-  .logo-1-separate {
-    width: 100px;
-    height: 100px;
-    right: 10px;
-    top: 0;
-    opacity: 1;
-    transform: translateX(100%);
-    z-index: 1;
-    animation: oneSlideInFromRight 0.5s ease-in-out 0s forwards, oneShiftToOverlap 0.4s ease-in-out 0.8s forwards, oneShiftToOverlapFinal 0.4s ease-in-out 1.4s forwards, oneFadeOut 0.3s ease-in-out 2.0s forwards;
-  }
-  
-  .logo-v-overlap,
-  .logo-1-overlap,
-  .logo-part3 {
-    width: 200px;
-    height: 100px;
-    left: 0;
-  }
-  
-  .logo-final {
-    width: 100px;
-    height: 100px;
-    left: 60px;
-    top: 0;
-    opacity: 0;
-    z-index: 3;
-    animation: finalLogoCrossfade 0.3s ease-in-out 2.0s forwards;
-  }
-  
-  /* Mobile-specific keyframes for smaller screens */
-  @keyframes vSlideInFromLeft {
-    0% { opacity: 1; transform: translateX(-100%); }
-    100% { opacity: 1; transform: translateX(0); }
-  }
-  
-  @keyframes oneSlideInFromRight {
-    0% { opacity: 1; transform: translateX(100%); }
-    100% { opacity: 1; transform: translateX(0); }
-  }
-  
-  @keyframes vShiftToOverlap {
-    0% { opacity: 1; transform: translateX(0); }
-    100% { opacity: 1; transform: translateX(0); }
-  }
-  
-  @keyframes oneShiftToOverlap {
-    0% { opacity: 1; transform: translateX(0); }
-    100% { opacity: 1; transform: translateX(0); }
-  }
-  
-  @keyframes vShiftToOverlapFinal {
-    0% { opacity: 1; transform: translateX(0); }
-    100% { opacity: 1; transform: translateX(40px); }
-  }
-  
-  @keyframes oneShiftToOverlapFinal {
-    0% { opacity: 1; transform: translateX(0); }
-    100% { opacity: 1; transform: translateX(-40px); }
-  }
-  
-  @keyframes vFadeOut {
-    0% { opacity: 1; transform: translateX(40px); }
-    100% { opacity: 0; transform: translateX(40px); }
-  }
-  
-  @keyframes oneFadeOut {
-    0% { opacity: 1; transform: translateX(-40px); }
-    100% { opacity: 0; transform: translateX(-40px); }
-  }
-}
+
+
 
 /* Modal Styles */
 .modal-overlay {
