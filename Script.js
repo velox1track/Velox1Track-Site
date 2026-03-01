@@ -824,22 +824,16 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-// Try to open a social media app via its URI scheme; fall back to the web URL
-// if the app is not installed or the link is opened on desktop.
-function openSocialApp(event, appUrl, webUrl) {
+// On mobile, navigate in the same tab so the OS can silently hand off to the
+// installed app via Universal Links (iOS) / App Links (Android) — no prompt.
+// On desktop, open a new tab as normal.
+function openSocialApp(event) {
     event.preventDefault();
-
-    var fallback = setTimeout(function () {
-        window.open(webUrl, '_blank');
-    }, 650);
-
-    // If the tab goes hidden the app opened — cancel the web fallback.
-    document.addEventListener('visibilitychange', function onHide() {
-        if (document.hidden) {
-            clearTimeout(fallback);
-            document.removeEventListener('visibilitychange', onHide);
-        }
-    });
-
-    window.location.href = appUrl;
+    var url = event.currentTarget.href;
+    var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+    if (isMobile) {
+        window.location.href = url;
+    } else {
+        window.open(url, '_blank');
+    }
 }

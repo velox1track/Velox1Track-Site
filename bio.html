@@ -440,25 +440,18 @@
     <script src="Script.js"></script>
 
     <script>
-        // Try LinkedIn app deep link; fall back to web if app is not installed.
+        // On mobile, navigate in the same tab so the OS can silently hand off to
+        // the LinkedIn app via Universal Links — no prompt, no dialog.
+        // On desktop, open a new tab as normal.
         function openLinkedIn(e) {
             e.preventDefault();
-            var appUrl = 'linkedin://in/rjalowonle';
-            var webUrl = 'https://www.linkedin.com/in/rjalowonle/';
-
-            var fallback = setTimeout(function () {
-                window.open(webUrl, '_blank');
-            }, 650);
-
-            // If the page becomes hidden, the app opened — cancel the fallback.
-            document.addEventListener('visibilitychange', function onHide() {
-                if (document.hidden) {
-                    clearTimeout(fallback);
-                    document.removeEventListener('visibilitychange', onHide);
-                }
-            });
-
-            window.location.href = appUrl;
+            var url = 'https://www.linkedin.com/in/rjalowonle/';
+            var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+            if (isMobile) {
+                window.location.href = url;
+            } else {
+                window.open(url, '_blank');
+            }
         }
 
         // Dynamically match padding-top to actual rendered header height so
