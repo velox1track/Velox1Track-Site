@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RJ Alowonle Jr – Founder & CEO, Velox 1</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@800&family=Roboto:wght@400;700&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* ===== BIO PAGE STYLES ===== */
+
+        .bio-page {
+            background-color: #3D4A52;
+            min-height: 100vh;
+            color: var(--color-text-secondary);
+        }
+
+        /* ---- Name / Hero Banner ---- */
+        .bio-hero {
+            padding: 160px var(--spacing-sm) 0; /* fallback; JS will override with exact header height */
+            text-align: center;
+        }
+
+        .bio-name {
+            font-family: 'Inter', sans-serif;
+            font-weight: 800;
+            font-size: clamp(2.4rem, 9vw, 5rem);
+            line-height: 1.05;
+            text-transform: uppercase;
+            color: #FFFFFF;
+            letter-spacing: -0.5px;
+            margin-bottom: 8px;
+        }
+
+        .bio-title-tag {
+            font-family: 'Roboto Mono', monospace;
+            font-weight: 700;
+            font-size: clamp(0.75rem, 3vw, 1.1rem);
+            text-transform: uppercase;
+            color: var(--color-primary);
+            letter-spacing: 0.08em;
+            margin-bottom: 0;
+        }
+
+        /* ---- Main Content Row ---- */
+        .bio-content-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            align-items: start;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-sm);
+        }
+
+        /* ---- Photo Column ---- */
+        .bio-photo-col {
+            position: relative;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+        }
+
+        .bio-photo-wrap {
+            position: relative;
+            width: 100%;
+            max-width: 420px;
+        }
+
+        /* Teal glow behind the photo */
+        .bio-photo-wrap::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 75%;
+            height: 60%;
+            background: radial-gradient(ellipse at center bottom, rgba(100, 226, 211, 0.28) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .bio-photo {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            height: auto;
+            display: block;
+            filter: grayscale(100%);
+            object-fit: contain;
+        }
+
+        /* ---- Bio Text Column ---- */
+        .bio-text-col {
+            padding: var(--spacing-lg) var(--spacing-sm) var(--spacing-md) var(--spacing-sm);
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-md);
+        }
+
+        .bio-body-text {
+            font-family: 'Roboto Mono', monospace;
+            font-size: clamp(0.82rem, 1.6vw, 0.95rem);
+            font-weight: 400;
+            text-transform: uppercase;
+            line-height: 1.65;
+            color: #E7E3E9;
+        }
+
+        /* ---- Triple Threat Section ---- */
+        .bio-bullets-section {
+            padding: var(--spacing-md) var(--spacing-sm) var(--spacing-xl);
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .bio-bullets-title {
+            font-family: 'Inter', sans-serif;
+            font-weight: 800;
+            font-size: clamp(1rem, 3.5vw, 1.4rem);
+            text-transform: uppercase;
+            color: #FFFFFF;
+            margin-bottom: var(--spacing-sm);
+            letter-spacing: 0.03em;
+        }
+
+        .bio-bullets-grid {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-sm);
+        }
+
+        .bio-bullet-card {
+            background: rgba(159, 167, 174, 0.18);
+            border: 1px solid rgba(100, 226, 211, 0.2);
+            border-left: 3px solid var(--color-primary);
+            border-radius: var(--radius-md);
+            padding: var(--spacing-sm) var(--spacing-md);
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+        }
+
+        .bio-bullet-text {
+            font-family: 'Roboto Mono', monospace;
+            font-size: clamp(0.78rem, 1.9vw, 0.9rem);
+            font-weight: 400;
+            text-transform: uppercase;
+            line-height: 1.55;
+            color: #E7E3E9;
+        }
+
+        .bio-bullet-text strong {
+            font-weight: 700;
+            color: #FFFFFF;
+        }
+
+        .bio-bullet-icon {
+            margin-right: 8px;
+            font-style: normal;
+        }
+
+        /* ---- Contact Bar ---- */
+        .bio-contact-bar {
+            background: rgba(100, 110, 118, 0.55);
+            border-top: 1px solid rgba(100, 226, 211, 0.15);
+            padding: var(--spacing-sm) var(--spacing-md);
+        }
+
+        .bio-contact-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: var(--spacing-sm);
+        }
+
+        .bio-contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-family: 'Roboto Mono', monospace;
+            font-size: clamp(0.72rem, 2vw, 0.88rem);
+            font-weight: 700;
+            text-transform: uppercase;
+            color: #E7E3E9;
+            text-decoration: none;
+            transition: color var(--transition-fast);
+        }
+
+        .bio-contact-item:hover {
+            color: var(--color-primary);
+        }
+
+        .bio-contact-item svg {
+            width: 18px;
+            height: 18px;
+            flex-shrink: 0;
+            color: var(--color-primary);
+        }
+
+        .bio-contact-divider {
+            color: rgba(231, 227, 233, 0.35);
+            font-size: 1.1rem;
+            line-height: 1;
+        }
+
+        .bio-contact-item.underline-link {
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+
+        /* ---- Header override for dark bio page ---- */
+        .bio-page .page-header {
+            background: rgba(40, 49, 55, 0.92);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border-bottom: 1px solid rgba(100, 226, 211, 0.12);
+        }
+
+        /* ===== RESPONSIVE ===== */
+
+        /* Tablet */
+        @media (max-width: 820px) {
+            .bio-content-row {
+                grid-template-columns: 1fr;
+                padding: 0;
+            }
+
+            .bio-photo-col {
+                padding: 0 var(--spacing-sm);
+                max-height: 420px;
+                overflow: hidden;
+            }
+
+            .bio-photo-wrap {
+                max-width: 320px;
+            }
+
+            .bio-text-col {
+                padding: var(--spacing-sm) var(--spacing-sm) var(--spacing-sm);
+            }
+
+            .bio-bullets-section {
+                padding: var(--spacing-sm) var(--spacing-sm) var(--spacing-xl);
+            }
+        }
+
+        /* Mobile */
+        @media (max-width: 540px) {
+            .bio-hero {
+                padding: 24px var(--spacing-sm) 0;
+            }
+
+            .bio-photo-col {
+                max-height: 360px;
+            }
+
+            .bio-contact-inner {
+                gap: 10px;
+            }
+
+            .bio-contact-divider {
+                display: none;
+            }
+
+            .bio-contact-item {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+
+        /* Wide desktop — side-by-side with more breathing room */
+        @media (min-width: 821px) {
+            .bio-content-row {
+                grid-template-columns: 5fr 6fr;
+                padding: 0 var(--spacing-lg);
+                align-items: center;
+            }
+
+            .bio-bullets-section {
+                padding: 0 var(--spacing-lg) var(--spacing-2xl);
+            }
+
+            .bio-bullets-grid {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body class="bio-page">
+
+    <!-- Header -->
+    <header class="page-header">
+        <div class="header-container">
+            <a href="index.html" class="header-logo">
+                <img src="./images/logo_flat_.svg.svg" alt="Velox 1 Logo" class="header-logo-img">
+            </a>
+            <nav class="nav" role="navigation" aria-label="Main navigation">
+                <div class="nav-menu" id="nav-menu">
+                    <a href="index.html" class="nav-link">Home</a>
+                    <a href="format.html" class="nav-link">Format</a>
+                    <a href="schedule.html" class="nav-link">Schedule</a>
+                    <a href="contact.html" class="nav-link">Contact</a>
+                    <button class="nav-cta" type="button" id="nav-stay-updated">Stay Updated</button>
+                </div>
+                <button class="nav-toggle" type="button" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-menu">
+                    <div class="hamburger"></div>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Name Banner -->
+    <div class="bio-hero">
+        <h1 class="bio-name">Rilwan &ldquo;RJ&rdquo; Alowonle Jr</h1>
+        <p class="bio-title-tag">Founder &amp; CEO, Velox 1</p>
+    </div>
+
+    <!-- Photo + Bio Text -->
+    <div class="bio-content-row">
+
+        <!-- Duality Photo -->
+        <div class="bio-photo-col">
+            <div class="bio-photo-wrap">
+                <img
+                    src="./images/RJ-Duality-Photo-Main.png"
+                    alt="RJ Alowonle Jr – Athlete and Executive"
+                    class="bio-photo"
+                >
+            </div>
+        </div>
+
+        <!-- Bio Text -->
+        <div class="bio-text-col">
+            <p class="bio-body-text">
+                From the starting blocks for Team Nigeria to the boardrooms of Deloitte, RJ has
+                spent his career mastering both elite competition and complex business strategy.
+                He is now bridging these two worlds through Velox 1, a startup dedicated to the
+                total reinvention of the track and field fan experience.
+            </p>
+            <p class="bio-body-text">
+                RJ is uniquely qualified to lead this shift, combining the grit of a world-class
+                athlete with the analytical mindset of a management consultant to turn a sleeping
+                giant into a commercial powerhouse.
+            </p>
+
+            <!-- Triple Threat — on desktop these live inside the text column; on mobile they stack below -->
+            <div class="bio-bullets-section" style="padding: 0; max-width: none;">
+                <div class="bio-bullets-grid">
+
+                    <div class="bio-bullet-card">
+                        <p class="bio-bullet-text">
+                            <strong>Elite Pedigree:</strong> 7-Year Pro Hurdler (Team Nigeria) &amp; All-American (UNC).
+                        </p>
+                    </div>
+
+                    <div class="bio-bullet-card">
+                        <p class="bio-bullet-text">
+                            <strong>Strategic Rigor:</strong> Deloitte Management Consultant (Customer &amp; Marketing).
+                        </p>
+                    </div>
+
+                    <div class="bio-bullet-card">
+                        <p class="bio-bullet-text">
+                            <strong>Operational Scale:</strong> Chick-fil-A Corporate Operations Consultant (Customer Throughput).
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Contact Bar -->
+    <footer class="bio-contact-bar">
+        <div class="bio-contact-inner">
+
+            <!-- Phone -->
+            <a href="tel:+16512303019" class="bio-contact-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.82 12 19.79 19.79 0 0 1 1.72 3.4 2 2 0 0 1 3.69 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.09a16 16 0 0 0 6 6l1.06-1.06a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+                </svg>
+                651-230-3019
+            </a>
+
+            <span class="bio-contact-divider" aria-hidden="true">|</span>
+
+            <!-- LinkedIn -->
+            <a href="https://www.linkedin.com/in/rjalowonle/" target="_blank" rel="noopener noreferrer" class="bio-contact-item underline-link">
+                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+                    <rect x="2" y="9" width="4" height="12"/>
+                    <circle cx="4" cy="4" r="2"/>
+                </svg>
+                LinkedIn
+            </a>
+
+            <span class="bio-contact-divider" aria-hidden="true">|</span>
+
+            <!-- Email -->
+            <a href="mailto:rj@velox1.com" class="bio-contact-item underline-link">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                    <polyline points="22,6 12,13 2,6"/>
+                </svg>
+                rj@velox1.com
+            </a>
+
+        </div>
+    </footer>
+
+    <!-- Modal for Stay Updated Form -->
+    <div class="modal-overlay" id="stay-updated-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Be First to Updates</h3>
+                <button class="modal-close" id="modal-close" aria-label="Close modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p class="modal-subtitle">Get notified about future events and league updates</p>
+                <form class="modal-form" id="modal-stay-updated-form" action="https://formspree.io/f/xrblajqg" method="POST">
+                    <div class="form-group">
+                        <label for="modal-name" class="form-label">Name</label>
+                        <input type="text" id="modal-name" name="name" class="form-input" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="modal-email" class="form-label">Email</label>
+                        <input type="email" id="modal-email" name="email" class="form-input" placeholder="Your Email" required>
+                    </div>
+                    <button type="submit" class="modal-submit-button">Stay Updated</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="Script.js"></script>
+
+    <script>
+        // Dynamically match padding-top to actual rendered header height so
+        // the name is never hidden behind the fixed nav on any device.
+        function adjustBioHeroPadding() {
+            var header = document.querySelector('.page-header');
+            var hero   = document.querySelector('.bio-hero');
+            if (header && hero) {
+                var headerH = header.getBoundingClientRect().height;
+                hero.style.paddingTop = (headerH + 24) + 'px'; // 24px breathing room
+            }
+        }
+
+        // Run immediately, after fonts/images load, and on resize
+        document.addEventListener('DOMContentLoaded', adjustBioHeroPadding);
+        window.addEventListener('load', adjustBioHeroPadding);
+        window.addEventListener('resize', adjustBioHeroPadding);
+    </script>
+</body>
+</html>
