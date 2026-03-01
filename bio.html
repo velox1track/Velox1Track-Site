@@ -440,17 +440,15 @@
     <script src="Script.js"></script>
 
     <script>
-        // On mobile, navigate in the same tab so the OS can silently hand off to
-        // the LinkedIn app via Universal Links — no prompt, no dialog.
-        // On desktop, open a new tab as normal.
+        // Strip target="_blank" on mobile so the OS can fire Universal Links and
+        // open the LinkedIn app silently without a dialog. On desktop, ensure
+        // the link opens in a new tab. Let the native click proceed in both cases.
         function openLinkedIn(e) {
-            e.preventDefault();
-            var url = 'https://www.linkedin.com/in/rjalowonle/';
             var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
             if (isMobile) {
-                window.location.href = url;
+                e.currentTarget.removeAttribute('target');
             } else {
-                window.open(url, '_blank');
+                e.currentTarget.setAttribute('target', '_blank');
             }
         }
 

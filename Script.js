@@ -824,16 +824,18 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-// On mobile, navigate in the same tab so the OS can silently hand off to the
-// installed app via Universal Links (iOS) / App Links (Android) — no prompt.
-// On desktop, open a new tab as normal.
+// Universal Links / App Links require a genuine anchor-element click to trigger
+// reliably across all apps (LinkedIn and Instagram are strict about this).
+// We simply strip target="_blank" on mobile so the OS can intercept the click
+// and open the installed app silently, or fall through to the browser if not
+// installed. On desktop we ensure target="_blank" so it opens a new tab.
 function openSocialApp(event) {
-    event.preventDefault();
-    var url = event.currentTarget.href;
     var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
     if (isMobile) {
-        window.location.href = url;
+        event.currentTarget.removeAttribute('target');
     } else {
-        window.open(url, '_blank');
+        event.currentTarget.setAttribute('target', '_blank');
     }
+    // Do NOT call preventDefault — let the native anchor click proceed so the
+    // OS Universal Link / App Link interception can fire correctly.
 }
