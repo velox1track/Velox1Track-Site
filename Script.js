@@ -823,3 +823,23 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
+
+// Try to open a social media app via its URI scheme; fall back to the web URL
+// if the app is not installed or the link is opened on desktop.
+function openSocialApp(event, appUrl, webUrl) {
+    event.preventDefault();
+
+    var fallback = setTimeout(function () {
+        window.open(webUrl, '_blank');
+    }, 650);
+
+    // If the tab goes hidden the app opened — cancel the web fallback.
+    document.addEventListener('visibilitychange', function onHide() {
+        if (document.hidden) {
+            clearTimeout(fallback);
+            document.removeEventListener('visibilitychange', onHide);
+        }
+    });
+
+    window.location.href = appUrl;
+}

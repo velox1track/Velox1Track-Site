@@ -390,7 +390,7 @@
             <span class="bio-contact-divider" aria-hidden="true">|</span>
 
             <!-- LinkedIn -->
-            <a href="https://www.linkedin.com/in/rjalowonle/" target="_blank" rel="noopener noreferrer" class="bio-contact-item underline-link">
+            <a href="https://www.linkedin.com/in/rjalowonle/" onclick="openLinkedIn(event)" rel="noopener noreferrer" class="bio-contact-item underline-link">
                 <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                     <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
                     <rect x="2" y="9" width="4" height="12"/>
@@ -440,6 +440,27 @@
     <script src="Script.js"></script>
 
     <script>
+        // Try LinkedIn app deep link; fall back to web if app is not installed.
+        function openLinkedIn(e) {
+            e.preventDefault();
+            var appUrl = 'linkedin://in/rjalowonle';
+            var webUrl = 'https://www.linkedin.com/in/rjalowonle/';
+
+            var fallback = setTimeout(function () {
+                window.open(webUrl, '_blank');
+            }, 650);
+
+            // If the page becomes hidden, the app opened — cancel the fallback.
+            document.addEventListener('visibilitychange', function onHide() {
+                if (document.hidden) {
+                    clearTimeout(fallback);
+                    document.removeEventListener('visibilitychange', onHide);
+                }
+            });
+
+            window.location.href = appUrl;
+        }
+
         // Dynamically match padding-top to actual rendered header height so
         // the name is never hidden behind the fixed nav on any device.
         function adjustBioHeroPadding() {
