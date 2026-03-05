@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@800&family=Roboto:wght@400;700&family=Roboto+Mono:wght@400&display=swap" rel="stylesheet">
 </head>
-<body>
+<body class="format-page">
     <!-- Header -->
     <header class="page-header">
         <div class="header-container">
@@ -30,57 +30,40 @@
     </header>
 
     <!-- Hero Section -->
-    <section class="hero" id="format-hero">
-        <div class="hero-background"></div>
-        <div class="hero-inner">
-            <div class="hero-content-row">
-                <div class="hero-content-spacer"></div>
-                <div class="hero-title-block">
-                    <h1 class="hero-title">HOW IT WORKS: RACE ROULETTE</h1>
-                    <p class="hero-subtitle">Velox 1 is a team-based, winner-take-all track & field competition built on our signature Race Roulette format. Every split-second choice counts—read on to master the mechanics.</p>
-                </div>
-            </div>
+    <section class="page-hero">
+        <div class="page-hero-bg"></div>
+        <div class="page-hero-overlay"></div>
+        <div class="page-hero-inner">
+            <p class="page-hero-eyebrow">Race Roulette</p>
+            <h1 class="page-title">How It Works</h1>
+            <p class="page-subtitle">Winner-take-all. Team-based. Every split-second choice matters.</p>
         </div>
     </section>
 
     <!-- Mechanics at a Glance Section -->
     <section class="mechanics-overview">
         <div class="container">
-            <h2 class="section-title">Mechanics at a Glance</h2>
+            <h2 class="section-title" data-reveal>Mechanics at a Glance</h2>
             <div class="mechanics-grid">
-                <div class="mechanics-card">
+                <div class="mechanics-card" data-reveal>
                     <h3 class="card-title">Team Scoring</h3>
-                    <p class="card-description">
-                        Teams earn—or lose—points based on each athlete's finish. Every placement matters in the overall competition.
-                    </p>
+                    <p class="card-description">Teams earn—or lose—points based on each athlete's finish. Every placement matters in the overall competition.</p>
                 </div>
-                
-                <div class="mechanics-card">
+                <div class="mechanics-card" data-reveal>
                     <h3 class="card-title">One Event at a Time</h3>
-                    <p class="card-description">
-                        Races are drawn at random and unveiled just before the starting gun. No advance preparation, pure adaptation.
-                    </p>
+                    <p class="card-description">Races are drawn at random and unveiled just before the starting gun. No advance preparation, pure adaptation.</p>
                 </div>
-                
-                <div class="mechanics-card">
+                <div class="mechanics-card" data-reveal>
                     <h3 class="card-title">Rapid Roster Moves</h3>
-                    <p class="card-description">
-                        Teams must choose their runner on the fly, adapting instantly to each reveal. Split-second decisions determine success.
-                    </p>
+                    <p class="card-description">Teams must choose their runner on the fly, adapting instantly to each reveal. Split-second decisions determine success.</p>
                 </div>
-                
-                <div class="mechanics-card">
+                <div class="mechanics-card" data-reveal>
                     <h3 class="card-title">One-and-Done</h3>
-                    <p class="card-description">
-                        Once an athlete races, they're ineligible for the rest of that competition. Strategic roster management is crucial.
-                    </p>
+                    <p class="card-description">Once an athlete races, they're ineligible for the rest of that competition. Strategic roster management is crucial.</p>
                 </div>
-                
-                <div class="mechanics-card">
+                <div class="mechanics-card" data-reveal>
                     <h3 class="card-title">Guaranteed Relay</h3>
-                    <p class="card-description">
-                        Every round features a relay race—points that can swing a team's fate. The ultimate test of coordination.
-                    </p>
+                    <p class="card-description">Every round features a relay race—points that can swing a team's fate. The ultimate test of coordination.</p>
                 </div>
             </div>
         </div>
@@ -124,7 +107,7 @@
     <!-- Quick Facts Section -->
     <section class="quick-facts">
         <div class="container">
-            <h2 class="section-title">Quick Facts</h2>
+            <h2 class="section-title" data-reveal>Quick Facts</h2>
             <div class="quick-facts-accordion">
                 <div class="accordion-item active" data-item="1">
                     <div class="accordion-header">
@@ -198,36 +181,59 @@
     <!-- Race Lineup Section -->
     <section class="event-types">
         <div class="container">
-            <h2 class="section-title">Race Lineup</h2>
+            <h2 class="section-title" data-reveal>Race Lineup</h2>
             <div class="events-grid">
-                <div class="event-category">
-                    <h3 class="category-title">The Sprinter</h3>
-                    <ul class="event-list">
-                        <li>100 Meters</li>
-                        <li>200 Meters</li>
-                        <li>300 Meters</li>
-                        <li>400 Meters</li>
-                    </ul>
+                <div class="event-category" data-reveal>
+                    <div class="category-photo-wrap">
+                        <img src="./images/race-sprint.jpg" alt="Sprint events" class="category-photo">
+                    </div>
+                    <div class="category-body">
+                        <h3 class="category-title">The Sprinter</h3>
+                        <span class="category-subtitle">Short Distance Events</span>
+                        <ul class="event-list">
+                            <li>50 Meters</li>
+                            <li>100 Meters</li>
+                            <li>200 Meters</li>
+                            <li>300 Meters</li>
+                            <li>400 Meters</li>
+                        </ul>
+                    </div>
                 </div>
-                
-                <div class="event-category">
-                    <h3 class="category-title">The Strider</h3>
-                    <ul class="event-list">
-                        <li>800 Meters</li>
-                        <li>1 Kilometer</li>
-                        <li>1.2 Kilometers</li>
-                        <li>1 Mile</li>
-                    </ul>
+
+                <div class="event-category" data-reveal>
+                    <div class="category-photo-wrap">
+                        <img src="./images/race-distance.jpg" alt="Distance events" class="category-photo">
+                    </div>
+                    <div class="category-body">
+                        <h3 class="category-title">The Strider</h3>
+                        <span class="category-subtitle">Middle &amp; Long Distance Events</span>
+                        <ul class="event-list">
+                            <li>500 Meters</li>
+                            <li>600 Meters</li>
+                            <li>800 Meters</li>
+                            <li>1.2 Kilometers</li>
+                            <li>1 Mile</li>
+                            <li>2 Kilometers</li>
+                            <li>2.4 Kilometers</li>
+                        </ul>
+                    </div>
                 </div>
-                
-                <div class="event-category">
-                    <h3 class="category-title">The Squad</h3>
-                    <ul class="event-list">
-                        <li>4 x 100 Meter Relay</li>
-                        <li>4 x 400 Meter Relay</li>
-                        <li>100–100–200–400 Meter Relay</li>
-                        <li>200–200–400–800 Meter Relay</li>
-                    </ul>
+
+                <div class="event-category" data-reveal>
+                    <div class="category-photo-wrap">
+                        <img src="./images/race-relay.jpg" alt="Relay events" class="category-photo">
+                    </div>
+                    <div class="category-body">
+                        <h3 class="category-title">The Squad</h3>
+                        <span class="category-subtitle">Relay Events</span>
+                        <ul class="event-list">
+                            <li>4 &times; 100m Relay</li>
+                            <li>4 &times; 200m Relay</li>
+                            <li>4 &times; 400m Relay</li>
+                            <li>100–100–200–400m Relay</li>
+                            <li>200–200–400–800m Relay</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
@@ -236,7 +242,7 @@
     <!-- Points & Penalties Section -->
     <section class="infractions-section">
         <div class="container">
-            <h2 class="section-title">Points & Penalties</h2>
+            <h2 class="section-title" data-reveal>Points &amp; Penalties</h2>
             <div class="infractions-content">
                 <p class="section-description">
                     Every finish counts—teams earn (or lose) points based on each athlete's placing and any rule infractions. Here's the full breakdown:
@@ -320,6 +326,9 @@
                     <a href="schedule.html">Schedule</a>
                     <a href="contact.html">Contact</a>
                 </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="footer-copyright">&copy; 2025 Velox 1. All rights reserved.</p>
             </div>
         </div>
     </footer>

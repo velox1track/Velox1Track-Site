@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@800&family=Roboto:wght@400;700&family=Roboto+Mono:wght@400&display=swap" rel="stylesheet">
 </head>
-<body>
+<body class="contact-page">
     <!-- Header -->
     <header class="page-header">
         <div class="header-container">
@@ -29,33 +29,44 @@
         </div>
     </header>
 
+    <!-- Hero -->
+    <section class="page-hero">
+        <div class="page-hero-bg"></div>
+        <div class="page-hero-overlay"></div>
+        <div class="page-hero-inner">
+            <p class="page-hero-eyebrow">Reach Out</p>
+            <h1 class="page-title">Contact</h1>
+            <p class="page-subtitle">Questions, ideas, or just want to talk track? We're here.</p>
+        </div>
+    </section>
+
     <!-- Contact Form Section -->
-    <section class="contact-form-section">
+    <section class="contact-section">
         <div class="container">
-            <div class="contact-content">
-                <div class="contact-form-container">
-                    <h2 class="section-title">Send us a message</h2>
-                    <p class="section-description">
-                        Have questions about Velox 1? Want to learn more about the Race Roulette format? We'd love to hear from you.
-                    </p>
-                    
+            <div class="contact-grid">
+
+                <!-- Form -->
+                <div class="contact-form-wrap" data-reveal>
+                    <h2 class="contact-form-heading">Send Us a Message</h2>
+                    <p class="contact-form-sub">Have questions about the Race Roulette format, a potential partnership, or anything else? Fill out the form and we'll get back to you.</p>
+
                     <form class="contact-form" id="contact-form" action="https://formspree.io/f/mqaldnql" method="POST">
                         <div class="form-row">
                             <div class="form-group">
                                 <label for="firstName" class="form-label">First Name</label>
-                                <input type="text" id="firstName" name="firstName" class="form-input" placeholder="Your First Name" required>
+                                <input type="text" id="firstName" name="firstName" class="form-input" placeholder="First Name" required>
                             </div>
                             <div class="form-group">
                                 <label for="lastName" class="form-label">Last Name</label>
-                                <input type="text" id="lastName" name="lastName" class="form-input" placeholder="Your Last Name" required>
+                                <input type="text" id="lastName" name="lastName" class="form-input" placeholder="Last Name" required>
                             </div>
                         </div>
-                        
+
                         <div class="form-group">
                             <label for="email" class="form-label">Email</label>
                             <input type="email" id="email" name="email" class="form-input" placeholder="Your Email" required>
                         </div>
-                        
+
                         <div class="form-group">
                             <label for="subject" class="form-label">Subject</label>
                             <select id="subject" name="subject" class="form-input" required>
@@ -68,56 +79,68 @@
                                 <option value="other">Other</option>
                             </select>
                         </div>
-                        
+
                         <div class="form-group">
                             <label for="message" class="form-label">Message</label>
                             <textarea id="message" name="message" class="form-textarea" rows="6" placeholder="Tell us what's on your mind..." required></textarea>
                         </div>
-                        
-                        <button type="submit" class="submit-button">Send Message</button>
+
+                        <button type="submit" class="contact-submit-btn">Send Message</button>
                     </form>
                 </div>
-                
-                <div class="contact-info">
-                    <h3 class="info-title">Get in Touch</h3>
-                    <div class="info-items">
-                        <div class="info-item">
-                            <div class="info-content">
-                                <h4 class="info-label">Email</h4>
-                                <p class="info-text">info@velox1.com</p>
+
+                <!-- Contact Info -->
+                <div class="contact-info-wrap" data-reveal>
+                    <div class="contact-info-block">
+                        <h3 class="contact-info-heading">Get in Touch</h3>
+
+                        <div class="contact-details">
+                            <div class="contact-detail-item">
+                                <span class="contact-detail-label">Email</span>
+                                <a href="mailto:info@velox1.com" class="contact-detail-value">info@velox1.com</a>
                             </div>
-                        </div>
-                        
-                        <div class="info-item">
-                            <div class="info-content">
-                                <h4 class="info-label">Phone</h4>
-                                <p class="info-text">+1 (651) 230-3019</p>
+                            <div class="contact-detail-item">
+                                <span class="contact-detail-label">Phone</span>
+                                <a href="tel:+16512303019" class="contact-detail-value">+1 (651) 230-3019</a>
                             </div>
                         </div>
                     </div>
-                    
-                    <div class="social-links-compact">
-                        <h4 class="social-links-title">Follow Us</h4>
-                        <div class="social-icons">
-                            <a href="https://www.youtube.com/@velox1track" onclick="openSocialApp(event)" class="social-link external-link" rel="noopener noreferrer">
-                                <img src="./images/youtube.png" alt="YouTube" class="social-icon">
-                                <span>YouTube</span>
+
+                    <div class="contact-social-block">
+                        <h4 class="contact-social-heading">Follow Us</h4>
+                        <div class="contact-social-grid">
+                            <a href="https://www.youtube.com/@velox1track" onclick="openSocialApp(event)" class="contact-social-item" rel="noopener noreferrer">
+                                <img src="./images/youtube-new-black.png" alt="YouTube" class="contact-social-icon">
+                                <span class="contact-social-label">YouTube</span>
                             </a>
-                            <a href="https://www.instagram.com/velox1track/" onclick="openSocialApp(event)" class="social-link external-link" rel="noopener noreferrer">
-                                <img src="./images/instagram.png" alt="Instagram" class="social-icon">
-                                <span>Instagram</span>
+                            <a href="https://www.instagram.com/velox1track/" onclick="openSocialApp(event)" class="contact-social-item" rel="noopener noreferrer">
+                                <img src="./images/instagram-new-black.png" alt="Instagram" class="contact-social-icon">
+                                <span class="contact-social-label">Instagram</span>
                             </a>
-                            <a href="https://www.tiktok.com/@velox1track" onclick="openSocialApp(event)" class="social-link external-link" rel="noopener noreferrer">
-                                <img src="./images/tik-tok.png" alt="TikTok" class="social-icon">
-                                <span>TikTok</span>
+                            <a href="https://www.tiktok.com/@velox1track" onclick="openSocialApp(event)" class="contact-social-item" rel="noopener noreferrer">
+                                <img src="./images/tiktok-new-black.png" alt="TikTok" class="contact-social-icon">
+                                <span class="contact-social-label">TikTok</span>
                             </a>
-                            <a href="https://x.com/velox1track" onclick="openSocialApp(event)" class="social-link external-link" rel="noopener noreferrer">
-                                <img src="./images/twitter.png" alt="X (Twitter)" class="social-icon">
-                                <span>X (Twitter)</span>
+                            <a href="https://x.com/velox1track" onclick="openSocialApp(event)" class="contact-social-item" rel="noopener noreferrer">
+                                <img src="./images/twitter-new-black.png" alt="X (Twitter)" class="contact-social-icon">
+                                <span class="contact-social-label">X / Twitter</span>
                             </a>
                         </div>
                     </div>
                 </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Bring Velox 1 to Your Team CTA -->
+    <section class="partner-section">
+        <div class="container">
+            <div class="partner-content" data-reveal>
+                <p class="partner-eyebrow">Get Involved</p>
+                <h2 class="partner-title">Bring Velox 1 to Your Team</h2>
+                <p class="partner-desc">Coaching a high school track team? Leading a run club? We're actively partnering with programs and organizations for our next round of test events. Fill out our interest form and we'll be in touch.</p>
+                <a href="https://form.jotform.com/253254923601150" class="partner-cta" target="_blank" rel="noopener noreferrer">Submit Interest Form</a>
             </div>
         </div>
     </section>
@@ -133,6 +156,9 @@
                     <a href="schedule.html">Schedule</a>
                     <a href="contact.html">Contact</a>
                 </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="footer-copyright">&copy; 2025 Velox 1. All rights reserved.</p>
             </div>
         </div>
     </footer>
@@ -151,12 +177,10 @@
                         <label for="modal-name" class="form-label">Name</label>
                         <input type="text" id="modal-name" name="name" class="form-input" placeholder="Your Name" required>
                     </div>
-                    
                     <div class="form-group">
                         <label for="modal-email" class="form-label">Email</label>
                         <input type="email" id="modal-email" name="email" class="form-input" placeholder="Your Email" required>
                     </div>
-
                     <button type="submit" class="modal-submit-button">Stay Updated</button>
                 </form>
             </div>
@@ -165,4 +189,4 @@
 
     <script src="Script.js"></script>
 </body>
-</html> 
+</html>

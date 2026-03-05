@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@800&family=Roboto:wght@400;700&family=Roboto+Mono:wght@400&display=swap" rel="stylesheet">
 </head>
-<body>
+<body class="home-page">
     <!-- Page Header -->
     <header class="page-header">
         <div class="header-container">
@@ -31,75 +31,57 @@
 
     <!-- Hero Section -->
     <section class="hero" id="home">
-        <div class="hero-background"></div>
+        <div class="hero-media">
+            <video class="hero-video" autoplay muted loop playsinline poster="./images/hero-video-poster.jpg">
+                <source src="./images/hero-video.mp4" type="video/mp4">
+            </video>
+            <div class="hero-overlay"></div>
+        </div>
         <div class="hero-inner">
-            <div class="hero-content-row">
-                <div class="hero-content-spacer"></div>
-                <div class="hero-title-block">
-                    <h1 class="hero-title">Faster isn't Enough</h1>
-                    <p class="hero-subtitle">Experience the future of track & field competition</p>
-                    <button class="hero-cta-button" id="hero-cta-button">Stay Updated</button>
-    </div>
-    </div>
-
-    </div>
+            <div class="hero-content">
+                <p class="hero-eyebrow">Track &amp; Field Reimagined</p>
+                <h1 class="hero-title">Faster isn't<br>Enough</h1>
+                <p class="hero-subtitle">Winner-take-all. Team-based. Race Roulette.</p>
+                <button class="hero-cta-button" id="hero-cta-button">Stay Updated</button>
+            </div>
+        </div>
     </section>
 
     <!-- What is Velox 1 Section -->
     <section class="about" id="about">
-        <div class="container">
-            <div class="about-content">
-                <h2 class="section-title">What is Velox 1?</h2>
-                <p class="section-description">
-                    Velox 1 is a winner-take-all, team-based track & field competition powered by our signature Race Roulette format—where every split-second choice matters.
-                </p>
-                
-                <ul class="about-features-list">
-                    <li class="feature-item">
-                        <span class="feature-text"><strong>One event at a time.</strong> Races are drawn randomly and revealed just before the gun.</span>
-                    </li>
-                    <li class="feature-item">
-                        <span class="feature-text"><strong>Rapid roster moves.</strong> Teams pick their runner on the fly, reacting instantly.</span>
-                    </li>
-                    <li class="feature-item">
-                        <span class="feature-text"><strong>One-and-done.</strong> Once an athlete runs, they're out for the rest of the round.</span>
-                    </li>
-                </ul>
-                
-                <!-- Logo Animation V2 -->
-                <div class="logo-animation-v2-container">
-                    <div class="logo-animation-v2">
-                        <!-- Phase 1: V and 1 positioned separately -->
-                        <img src="./images/Animation Logo - V for Animation.svg" alt="V Logo" class="logo-v-separate" id="logo-v-separate">
-                        <img src="./images/Animation Logo - 1 for Animation.svg" alt="1 Logo" class="logo-1-separate" id="logo-1-separate">
-                        
-                        <!-- Phase 2: V and 1 in overlapping position -->
-                        <img src="./images/Animation Logo - V for Animation.svg" alt="V Logo" class="logo-v-overlap" id="logo-v-overlap">
-                        <img src="./images/Animation Logo - 1 for Animation.svg" alt="1 Logo" class="logo-1-overlap" id="logo-1-overlap">
-                        
-                        <!-- Phase 3: Part 3 overlay -->
-                        <img src="./images/Animation Logo - Part 3 for Animation.svg" alt="Part 3 Logo" class="logo-part3" id="logo-part3">
-                        
-                        <!-- Phase 4: Final brand logo -->
-                        <img src="./images/Brand Logo for Animation.svg" alt="Final Brand Logo" class="logo-final" id="logo-final">
-                    </div>
-                    <!-- Replay Animation Button -->
-                    <button class="replay-animation-btn" id="replay-animation-btn" type="button">
-                        <svg class="replay-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M1 4V10H7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            <path d="M3.51 15A9 9 0 1 0 6 5L1 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                        Replay Animation
-                    </button>
+        <div class="about-intro" data-reveal>
+            <h2 class="about-heading">What is Velox 1?</h2>
+            <p class="about-description">A winner-take-all, team-based track &amp; field competition powered by our signature Race Roulette format — where every split-second choice matters.</p>
+        </div>
+        <div class="about-cards">
+            <div class="about-card" data-reveal>
+                <div class="about-card-bg" style="background-image: url('./images/home-action-sprint.jpg')"></div>
+                <div class="about-card-overlay"></div>
+                <div class="about-card-content">
+                    <span class="about-card-number">01</span>
+                    <h3 class="about-card-title">One Event at a Time</h3>
+                    <p class="about-card-text">Races are drawn randomly and revealed just before the gun.</p>
                 </div>
-                
-                <div class="about-tagline">
-                    <p class="tagline-text">Fast. Fierce. Unpredictable.</p>
-                    <p class="tagline-text">Welcome to Velox 1</p>
+            </div>
+            <div class="about-card" data-reveal>
+                <div class="about-card-bg" style="background-image: url('./images/home-action-team.jpg')"></div>
+                <div class="about-card-overlay"></div>
+                <div class="about-card-content">
+                    <span class="about-card-number">02</span>
+                    <h3 class="about-card-title">Rapid Roster Moves</h3>
+                    <p class="about-card-text">Teams pick their runner on the fly, reacting instantly.</p>
                 </div>
-
-    </div>
-  </div>
+            </div>
+            <div class="about-card" data-reveal>
+                <div class="about-card-bg" style="background-image: url('./images/home-action-finish.jpg')"></div>
+                <div class="about-card-overlay"></div>
+                <div class="about-card-content">
+                    <span class="about-card-number">03</span>
+                    <h3 class="about-card-title">One and Done</h3>
+                    <p class="about-card-text">Once an athlete runs, they're out for the rest of the round.</p>
+                </div>
+            </div>
+        </div>
     </section>
 
     <!-- Trial Event Section -->
@@ -135,7 +117,7 @@
         
         <div class="container">
             <div class="join-content">
-                <div class="join-form-section">
+                <div class="join-form-section" data-reveal>
                     <form class="join-form" id="stay-updated-form" action="https://formspree.io/f/xrblajqg" method="POST">
                         <p class="form-subtitle">Be the first to know about upcoming competitions, exclusive early access, and special member benefits</p>
                         
@@ -153,24 +135,24 @@
                     </form>
                 </div>
                 
-                <div class="social-section">
+                <div class="social-section" data-reveal>
                     <h3 class="social-title">Follow Us</h3>
-                    <div class="social-links">
-                        <a href="https://www.youtube.com/@velox1track" onclick="openSocialApp(event)" class="social-link external-link" rel="noopener noreferrer">
-                            <img src="./images/youtube.png" alt="YouTube" class="social-icon">
-                            <span>YouTube</span>
+                    <div class="social-grid">
+                        <a href="https://www.youtube.com/@velox1track" onclick="openSocialApp(event)" class="social-grid-item" rel="noopener noreferrer">
+                            <img src="./images/youtube-new-white.png" alt="YouTube" class="social-grid-icon">
+                            <span class="social-grid-label">YouTube</span>
                         </a>
-                        <a href="https://www.instagram.com/velox1track/" onclick="openSocialApp(event)" class="social-link external-link" rel="noopener noreferrer">
-                            <img src="./images/instagram.png" alt="Instagram" class="social-icon">
-                            <span>Instagram</span>
+                        <a href="https://www.instagram.com/velox1track/" onclick="openSocialApp(event)" class="social-grid-item" rel="noopener noreferrer">
+                            <img src="./images/instagram-new-white.png" alt="Instagram" class="social-grid-icon">
+                            <span class="social-grid-label">Instagram</span>
                         </a>
-                        <a href="https://www.tiktok.com/@velox1track" onclick="openSocialApp(event)" class="social-link external-link" rel="noopener noreferrer">
-                            <img src="./images/tik-tok.png" alt="TikTok" class="social-icon">
-                            <span>TikTok</span>
+                        <a href="https://www.tiktok.com/@velox1track" onclick="openSocialApp(event)" class="social-grid-item" rel="noopener noreferrer">
+                            <img src="./images/tiktok-new-white.png" alt="TikTok" class="social-grid-icon">
+                            <span class="social-grid-label">TikTok</span>
                         </a>
-                        <a href="https://x.com/velox1track" onclick="openSocialApp(event)" class="social-link external-link" rel="noopener noreferrer">
-                            <img src="./images/twitter.png" alt="X (Twitter)" class="social-icon">
-                            <span>X (Twitter)</span>
+                        <a href="https://x.com/velox1track" onclick="openSocialApp(event)" class="social-grid-item" rel="noopener noreferrer">
+                            <img src="./images/twitter-new-white.png" alt="X (Twitter)" class="social-grid-icon">
+                            <span class="social-grid-label">X / Twitter</span>
                         </a>
                     </div>
                 </div>
@@ -189,6 +171,9 @@
                     <a href="schedule.html">Schedule</a>
                     <a href="contact.html">Contact</a>
                 </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="footer-copyright">&copy; 2025 Velox 1. All rights reserved.</p>
             </div>
         </div>
     </footer>

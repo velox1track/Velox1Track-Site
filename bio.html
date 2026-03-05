@@ -10,7 +10,7 @@
         /* ===== BIO PAGE STYLES ===== */
 
         .bio-page {
-            background-color: #3D4A52;
+            background-color: #0c0c0c;
             min-height: 100vh;
             color: var(--color-text-secondary);
         }
@@ -132,13 +132,11 @@
         }
 
         .bio-bullet-card {
-            background: rgba(159, 167, 174, 0.18);
-            border: 1px solid rgba(100, 226, 211, 0.2);
+            background: #161616;
+            border: 1px solid rgba(255, 255, 255, 0.07);
             border-left: 3px solid var(--color-primary);
             border-radius: var(--radius-md);
             padding: var(--spacing-sm) var(--spacing-md);
-            backdrop-filter: blur(6px);
-            -webkit-backdrop-filter: blur(6px);
         }
 
         .bio-bullet-text {
@@ -162,8 +160,8 @@
 
         /* ---- Contact Bar ---- */
         .bio-contact-bar {
-            background: rgba(100, 110, 118, 0.55);
-            border-top: 1px solid rgba(100, 226, 211, 0.15);
+            background: #111111;
+            border-top: 1px solid rgba(255, 255, 255, 0.07);
             padding: var(--spacing-sm) var(--spacing-md);
         }
 
@@ -212,13 +210,7 @@
             text-underline-offset: 3px;
         }
 
-        /* ---- Header override for dark bio page ---- */
-        .bio-page .page-header {
-            background: rgba(40, 49, 55, 0.92);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-            border-bottom: 1px solid rgba(100, 226, 211, 0.12);
-        }
+        /* ---- Header: inherits global dark nav style ---- */
 
         /* ===== RESPONSIVE ===== */
 

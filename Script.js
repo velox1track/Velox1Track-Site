@@ -28,15 +28,34 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
-<<<<<<< HEAD
 
-    // ---- Hide nav on scroll down, show on scroll up ----
+    // ---- Transparent nav (home page) + hide/show on scroll ----
     const pageHeader = document.querySelector('.page-header');
+    const isHomePage = document.body.classList.contains('home-page');
     let lastScrollY = window.scrollY;
     const SCROLL_THRESHOLD = 8; // px delta required before reacting
+    const TRANSPARENT_THRESHOLD = 80; // px from top before nav turns solid
+
+    // Apply initial transparent state on home page
+    if (isHomePage) {
+        if (window.scrollY <= TRANSPARENT_THRESHOLD) {
+            pageHeader.classList.remove('nav-scrolled');
+        } else {
+            pageHeader.classList.add('nav-scrolled');
+        }
+    }
 
     window.addEventListener('scroll', function () {
         const currentScrollY = window.scrollY;
+
+        // ── Transparent ↔ solid transition (home page only) ──
+        if (isHomePage) {
+            if (currentScrollY <= TRANSPARENT_THRESHOLD) {
+                pageHeader.classList.remove('nav-scrolled');
+            } else {
+                pageHeader.classList.add('nav-scrolled');
+            }
+        }
 
         // Always show nav when at the very top of the page
         if (currentScrollY <= 10) {
@@ -62,9 +81,24 @@ document.addEventListener('DOMContentLoaded', function() {
         lastScrollY = currentScrollY;
     }, { passive: true });
 
-=======
-    
->>>>>>> 0d1ce80120f48b44e4368128366134d5b3c53ec6
+    // ---- Scroll reveal (fade-and-rise) ----
+    const revealElements = document.querySelectorAll('[data-reveal]');
+    if (revealElements.length > 0) {
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.12,
+            rootMargin: '0px 0px -60px 0px'
+        });
+        revealElements.forEach(el => revealObserver.observe(el));
+    }
+
+
     // Handle navigation links - allow external page navigation
     const navLinks = document.querySelectorAll('.nav-link');
     navLinks.forEach(link => {
@@ -414,20 +448,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-<<<<<<< HEAD
     // Social links use native anchor href — no JS override needed
-=======
-    // Social link interactions
-    const socialLinks = document.querySelectorAll('.social-link');
-    socialLinks.forEach(link => {
-        link.addEventListener('click', function(e) {
-            e.preventDefault();
-            const platform = this.querySelector('span').textContent.toLowerCase();
-            // Add your social media redirect logic here
-            console.log(`Redirecting to ${platform}`);
-        });
-    });
->>>>>>> 0d1ce80120f48b44e4368128366134d5b3c53ec6
     
 
 });
@@ -823,6 +844,59 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
+
+// ---- Event photo carousel (schedule page) ----
+(function () {
+    const carousel = document.getElementById('event-carousel');
+    if (!carousel) return;
+
+    const track    = document.getElementById('carousel-track');
+    const slides   = track.querySelectorAll('.carousel-slide');
+    const dots     = document.querySelectorAll('.carousel-dot');
+    const prevBtn  = document.getElementById('carousel-prev');
+    const nextBtn  = document.getElementById('carousel-next');
+    const total    = slides.length;
+    let current    = 0;
+    let autoTimer  = null;
+
+    function goTo(idx) {
+        current = ((idx % total) + total) % total;
+        track.style.transform = `translateX(-${current * 100}%)`;
+        dots.forEach((d, i) => d.classList.toggle('active', i === current));
+    }
+
+    function startAuto() {
+        autoTimer = setInterval(() => goTo(current + 1), 4500);
+    }
+
+    function resetAuto() {
+        clearInterval(autoTimer);
+        startAuto();
+    }
+
+    prevBtn.addEventListener('click', () => { goTo(current - 1); resetAuto(); });
+    nextBtn.addEventListener('click', () => { goTo(current + 1); resetAuto(); });
+
+    dots.forEach((dot, i) => {
+        dot.addEventListener('click', () => { goTo(i); resetAuto(); });
+    });
+
+    // Pause on hover, resume on leave
+    carousel.addEventListener('mouseenter', () => clearInterval(autoTimer));
+    carousel.addEventListener('mouseleave', startAuto);
+
+    // Touch / swipe support
+    let touchStartX = 0;
+    carousel.addEventListener('touchstart', e => {
+        touchStartX = e.touches[0].clientX;
+    }, { passive: true });
+    carousel.addEventListener('touchend', e => {
+        const diff = touchStartX - e.changedTouches[0].clientX;
+        if (Math.abs(diff) > 40) { goTo(diff > 0 ? current + 1 : current - 1); resetAuto(); }
+    }, { passive: true });
+
+    startAuto();
+}());
 
 // Universal Links / App Links require a genuine anchor-element click to trigger
 // reliably across all apps (LinkedIn and Instagram are strict about this).
