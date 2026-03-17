@@ -319,6 +319,15 @@ h1, h2, h3, h4 {
     margin-bottom: 24px;
 }
 
+.field-optional {
+    font-weight: 400;
+    font-size: 11px;
+    text-transform: none;
+    opacity: 0.5;
+    letter-spacing: 0;
+    margin-left: 4px;
+}
+
 .form-label {
     color: var(--color-text-primary);
     font-weight: 700;
