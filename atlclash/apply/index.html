@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Velox 1: ATL Club Clash — Apply</title>
+
+    <!-- Prevent search engines from indexing this redirect page -->
+    <meta name="robots" content="noindex, nofollow">
+
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-KCJG62RX');</script>
+    <!-- End Google Tag Manager -->
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: #080A0B;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            font-family: 'Inter', sans-serif;
+        }
+        .loading-wrap {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+        .loading-spinner {
+            width: 36px;
+            height: 36px;
+            border: 3px solid rgba(100, 226, 211, 0.2);
+            border-top-color: #64E2D3;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        .loading-text {
+            font-size: 12px;
+            font-family: 'Roboto Mono', monospace;
+            color: rgba(255, 255, 255, 0.4);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KCJG62RX"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <div class="loading-wrap">
+        <div class="loading-spinner"></div>
+        <p class="loading-text">Loading application...</p>
+    </div>
+
+    <script>
+        var JOTFORM_URL = 'https://form.jotform.com/260798369510063';
+        var FALLBACK_MS = 1500;
+
+        // Build destination URL, forwarding any UTM params from the current URL
+        function buildDestination() {
+            var sourceParams = new URLSearchParams(window.location.search);
+            var destParams = new URLSearchParams();
+
+            // Always tag this as a QR scan from a printed flyer
+            destParams.set('utm_source', sourceParams.get('utm_source') || 'qr_code');
+            destParams.set('utm_medium', sourceParams.get('utm_medium') || 'print');
+            destParams.set('utm_campaign', sourceParams.get('utm_campaign') || 'atl_club_clash');
+
+            // Forward any other UTM params that may be present
+            ['utm_term', 'utm_content'].forEach(function(key) {
+                if (sourceParams.get(key)) destParams.set(key, sourceParams.get(key));
+            });
+
+            return JOTFORM_URL + '?' + destParams.toString();
+        }
+
+        // Push custom event to dataLayer so GTM can record the QR scan
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({
+            event: 'flyer_qr_scan',
+            event_category: 'flyer',
+            event_label: 'atl_club_clash_apply'
+        });
+
+        var redirected = false;
+        function doRedirect() {
+            if (redirected) return;
+            redirected = true;
+            window.location.replace(buildDestination());
+        }
+
+        // Redirect as soon as GTM's container finishes loading
+        window.dataLayer.push({
+            event: 'gtm.load',
+            eventCallback: doRedirect,
+            eventTimeout: FALLBACK_MS
+        });
+
+        // Fallback: redirect after FALLBACK_MS regardless
+        setTimeout(doRedirect, FALLBACK_MS);
+    </script>
+
+</body>
+</html>

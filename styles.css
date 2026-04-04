@@ -6192,3 +6192,913 @@ h1, h2, h3, h4 {
         grid-template-columns: repeat(4, 1fr);
     }
 }
+
+
+/* =============================================================
+   EVENTS PAGE — UPCOMING EVENTS SECTION
+   ============================================================= */
+
+.upcoming-events-section {
+    background: #ffffff;
+    padding: 80px 0 90px;
+    border-bottom: 1px solid #ebebeb;
+}
+
+.upcoming-events-heading {
+    font-family: 'Inter', sans-serif;
+    font-weight: 800;
+    font-size: clamp(24px, 3vw, 36px);
+    color: #080A0B;
+    text-transform: uppercase;
+    letter-spacing: -0.3px;
+    margin-bottom: 32px;
+}
+
+.upcoming-event-card {
+    background: #f8f8f8;
+    border: 1px solid #e4e4e4;
+    border-left: 4px solid #64E2D3;
+    border-radius: 10px;
+    padding: 36px 36px 36px 40px;
+    display: grid;
+    grid-template-columns: 1fr 220px;
+    gap: 40px;
+    align-items: start;
+    position: relative;
+}
+
+.upcoming-event-badge {
+    position: absolute;
+    top: -13px;
+    left: 40px;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 11px;
+    font-weight: 700;
+    color: #080A0B;
+    background: #64E2D3;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 4px 12px;
+    border-radius: 4px;
+}
+
+.upcoming-event-eyebrow {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 11px;
+    font-weight: 700;
+    color: rgba(8, 10, 11, 0.45);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+    margin-top: 8px;
+}
+
+.upcoming-event-name {
+    font-family: 'Inter', sans-serif;
+    font-weight: 800;
+    font-size: clamp(24px, 3.5vw, 40px);
+    color: #080A0B;
+    text-transform: uppercase;
+    letter-spacing: -0.5px;
+    line-height: 1.05;
+    margin-bottom: 6px;
+}
+
+.upcoming-event-sub {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 12px;
+    font-weight: 700;
+    color: rgba(8, 10, 11, 0.50);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 16px;
+}
+
+.upcoming-event-desc {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 13px;
+    color: rgba(8, 10, 11, 0.60);
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+    line-height: 1.85;
+    margin-bottom: 28px;
+}
+
+.upcoming-event-actions {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.upcoming-event-cta {
+    display: inline-block;
+    background: #080A0B;
+    color: #E7E3E9;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    text-decoration: none;
+    padding: 12px 28px;
+    border-radius: 5px;
+    border: 2px solid #080A0B;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+.upcoming-event-cta:hover {
+    background: transparent;
+    color: #080A0B;
+}
+
+.upcoming-event-apply {
+    display: inline-block;
+    background: #64E2D3;
+    color: #080A0B;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    text-decoration: none;
+    padding: 12px 28px;
+    border-radius: 5px;
+    border: 2px solid #64E2D3;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+.upcoming-event-apply:hover {
+    background: transparent;
+    color: #64E2D3;
+}
+
+.upcoming-event-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    border-left: 1px solid #e4e4e4;
+    padding-left: 40px;
+    margin-top: 8px;
+}
+
+.upcoming-meta-item {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    padding: 14px 0;
+    border-bottom: 1px solid #ebebeb;
+}
+
+.upcoming-meta-item:last-child {
+    border-bottom: none;
+}
+
+.upcoming-meta-label {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 10px;
+    font-weight: 700;
+    color: rgba(8, 10, 11, 0.38);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.upcoming-meta-value {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 13px;
+    font-weight: 700;
+    color: #080A0B;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+}
+
+.upcoming-meta-free {
+    color: #45A196;
+}
+
+/* ── Past Events label ── */
+.past-events-label {
+    background: #111111;
+    padding: 16px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.past-events-heading {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 11px;
+    font-weight: 700;
+    color: rgba(231, 227, 233, 0.40);
+    text-transform: uppercase;
+    letter-spacing: 3px;
+}
+
+/* ── Responsive upcoming events ── */
+@media (max-width: 768px) {
+    .upcoming-event-card {
+        grid-template-columns: 1fr;
+        gap: 28px;
+    }
+
+    .upcoming-event-meta {
+        border-left: none;
+        padding-left: 0;
+        border-top: 1px solid #e4e4e4;
+        padding-top: 20px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .upcoming-meta-item {
+        border-bottom: none;
+        padding: 10px 0;
+    }
+}
+
+/* =============================================================
+   ATL CLUB CLASH EVENT PAGE
+   ============================================================= */
+
+/* ── Hero ── */
+.clash-hero {
+    position: relative;
+    min-height: 92vh;
+    display: flex;
+    align-items: stretch;
+    overflow: hidden;
+}
+
+.clash-hero-bg {
+    position: absolute;
+    inset: 0;
+    background: url('./images/atl-club-clash-flyer-background.jpg') 70% center/cover no-repeat;
+    z-index: 0;
+}
+
+.clash-hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        to right,
+        rgba(8, 10, 11, 0.90) 0%,
+        rgba(8, 10, 11, 0.70) 55%,
+        rgba(8, 10, 11, 0.30) 100%
+    );
+    z-index: 1;
+}
+
+.clash-hero-inner {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: flex-end;
+    width: 100%;
+    padding-top: 100px;
+    min-height: 92vh;
+}
+
+.clash-hero-text {
+    padding: 80px 0 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.clash-hero-eyebrow {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 12px;
+    font-weight: 700;
+    color: #64E2D3;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-bottom: 20px;
+    display: block;
+}
+
+.clash-hero-title {
+    font-family: 'Inter', sans-serif;
+    font-weight: 800;
+    font-size: clamp(52px, 8vw, 96px);
+    color: #ffffff;
+    text-transform: uppercase;
+    letter-spacing: -2px;
+    line-height: 0.95;
+    margin-bottom: 20px;
+}
+
+.clash-hero-subtitle {
+    font-family: 'Roboto Mono', monospace;
+    font-size: clamp(12px, 1.4vw, 15px);
+    color: rgba(231, 227, 233, 0.70);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 28px;
+}
+
+.clash-hero-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 36px;
+}
+
+.clash-badge {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #080A0B;
+    background: #ffffff;
+    padding: 6px 14px;
+    border-radius: 4px;
+}
+
+.clash-cta-btn {
+    display: inline-block;
+    background: #64E2D3;
+    color: #080A0B;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    text-decoration: none;
+    padding: 16px 40px;
+    border-radius: 5px;
+    border: 2px solid #64E2D3;
+    transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease;
+    align-self: flex-start;
+}
+
+.clash-cta-btn:hover {
+    background: transparent;
+    color: #64E2D3;
+    transform: translateY(-2px);
+}
+
+.clash-hero-athlete {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    height: 100%;
+    min-height: 92vh;
+}
+
+.clash-athlete-img {
+    max-height: 88vh;
+    width: auto;
+    object-fit: contain;
+    display: block;
+    filter: drop-shadow(0 0 48px rgba(100, 226, 211, 0.35));
+}
+
+/* ── Info Strip ── */
+.clash-info-strip {
+    background: #080A0B;
+    border-top: 1px solid rgba(100, 226, 211, 0.2);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    padding: 22px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0;
+}
+
+.clash-info-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    padding: 8px 32px;
+}
+
+.clash-info-sep {
+    width: 1px;
+    height: 36px;
+    background: rgba(255, 255, 255, 0.12);
+    flex-shrink: 0;
+}
+
+.clash-info-label {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 10px;
+    font-weight: 700;
+    color: rgba(231, 227, 233, 0.40);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.clash-info-value {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 13px;
+    font-weight: 700;
+    color: #E7E3E9;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* ── Shared section title styles ── */
+.clash-section-title {
+    font-family: 'Inter', sans-serif;
+    font-weight: 800;
+    font-size: clamp(32px, 4.5vw, 56px);
+    color: #080A0B;
+    text-transform: uppercase;
+    letter-spacing: -0.5px;
+    line-height: 1.05;
+    margin-bottom: 12px;
+}
+
+.clash-section-title--light {
+    color: #E7E3E9;
+}
+
+.clash-section-desc {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 14px;
+    color: rgba(8, 10, 11, 0.55);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    line-height: 1.8;
+}
+
+.clash-section-desc--light {
+    color: rgba(231, 227, 233, 0.55);
+}
+
+/* ── Mechanics Section (light background) ── */
+.clash-mechanics-section {
+    background: #ffffff;
+    padding: 90px 0 100px;
+}
+
+.clash-mechanics-header {
+    text-align: center;
+    max-width: 680px;
+    margin: 0 auto 64px;
+}
+
+.clash-mechanics-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    max-width: 860px;
+    margin: 0 auto;
+}
+
+.clash-mechanic {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: 24px;
+    align-items: flex-start;
+    padding: 32px 0;
+    border-bottom: 1px solid #ebebeb;
+}
+
+.clash-mechanic:last-child {
+    border-bottom: none;
+}
+
+.clash-mechanic-num {
+    font-family: 'Inter', sans-serif;
+    font-weight: 800;
+    font-size: 48px;
+    color: #64E2D3;
+    line-height: 1;
+    letter-spacing: -1px;
+    padding-top: 4px;
+}
+
+.clash-mechanic-title {
+    font-family: 'Inter', sans-serif;
+    font-weight: 800;
+    font-size: 20px;
+    color: #080A0B;
+    text-transform: uppercase;
+    letter-spacing: -0.2px;
+    margin-bottom: 8px;
+}
+
+.clash-mechanic-text {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 13px;
+    color: rgba(8, 10, 11, 0.60);
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+    line-height: 1.85;
+}
+
+/* ── Why Participate Section (dark background) ── */
+.clash-why-section {
+    background: #0c0c0c;
+    padding: 90px 0 100px;
+}
+
+.clash-why-header {
+    text-align: center;
+    max-width: 680px;
+    margin: 0 auto 64px;
+}
+
+.clash-why-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.clash-why-card {
+    background: #161616;
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: 10px;
+    padding: 32px 28px;
+    position: relative;
+}
+
+.clash-why-card--featured {
+    border-color: rgba(100, 226, 211, 0.25);
+    background: #0f1f1e;
+}
+
+.clash-why-featured-tag {
+    display: inline-block;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 10px;
+    font-weight: 700;
+    color: #080A0B;
+    background: #64E2D3;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 4px 10px;
+    border-radius: 3px;
+    margin-bottom: 14px;
+}
+
+.clash-why-title {
+    font-family: 'Inter', sans-serif;
+    font-weight: 800;
+    font-size: 16px;
+    color: #E7E3E9;
+    text-transform: uppercase;
+    letter-spacing: -0.1px;
+    margin-bottom: 10px;
+}
+
+.clash-why-text {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 12px;
+    color: rgba(231, 227, 233, 0.55);
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+    line-height: 1.85;
+}
+
+/* ── Who We're Looking For (white background) ── */
+.clash-who-section {
+    background: #ffffff;
+    padding: 90px 0 100px;
+}
+
+.clash-who-header {
+    text-align: center;
+    max-width: 680px;
+    margin: 0 auto 56px;
+}
+
+.clash-who-desc {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 13px;
+    color: rgba(8, 10, 11, 0.60);
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+    line-height: 1.85;
+}
+
+.clash-who-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    max-width: 1100px;
+    margin: 0 auto 56px;
+    justify-content: center;
+}
+
+.clash-who-card {
+    flex: 1 1 calc(33.333% - 16px);
+    min-width: 260px;
+    max-width: calc(33.333% - 16px);
+    background: #f5f5f5;
+    border: 1px solid #e8e8e8;
+    border-left: 3px solid #64E2D3;
+    border-radius: 10px;
+    padding: 28px 24px;
+    text-align: center;
+}
+
+.clash-who-card--open {
+    border-left-color: #64E2D3;
+    background: #edfaf8;
+    border-color: rgba(100, 226, 211, 0.5);
+}
+
+.clash-who-card-title {
+    font-family: 'Inter', sans-serif;
+    font-weight: 800;
+    font-size: 15px;
+    color: #080A0B;
+    text-transform: uppercase;
+    letter-spacing: -0.1px;
+    margin-bottom: 0;
+}
+
+.clash-who-card--open .clash-who-card-title {
+    margin-bottom: 8px;
+}
+
+.clash-who-card-sub {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 11px;
+    color: rgba(8, 10, 11, 0.55);
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+    line-height: 1.7;
+    margin: 0;
+}
+
+.clash-who-facts {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0;
+    max-width: 1100px;
+    margin: 0 auto;
+    border-top: 1px solid #e8e8e8;
+    border-bottom: 1px solid #e8e8e8;
+}
+
+.clash-who-fact {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding: 24px 32px;
+    border-right: 1px solid #e8e8e8;
+    flex: 1 1 0;
+    min-width: 160px;
+    text-align: center;
+    align-items: center;
+}
+
+.clash-who-fact:last-child {
+    border-right: none;
+}
+
+.clash-who-fact-label {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 10px;
+    font-weight: 700;
+    color: rgba(8, 10, 11, 0.40);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.clash-who-fact-value {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 13px;
+    font-weight: 700;
+    color: #080A0B;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+}
+
+.clash-who-fact-free {
+    color: #45A196;
+}
+
+.clash-who-fact-link {
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.clash-who-fact-link:hover {
+    color: #64E2D3;
+}
+
+/* ── Apply Now CTA (dark background) ── */
+.clash-apply-section {
+    background: #0c0c0c;
+    padding: 100px 0;
+    border-top: 1px solid rgba(100, 226, 211, 0.15);
+}
+
+.clash-apply-content {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 0 32px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.clash-free-badge {
+    display: inline-block;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 11px;
+    font-weight: 700;
+    color: #080A0B;
+    background: #ffffff;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    padding: 6px 16px;
+    border-radius: 4px;
+    margin-bottom: 24px;
+}
+
+.clash-apply-title {
+    font-family: 'Inter', sans-serif;
+    font-weight: 800;
+    font-size: clamp(36px, 5vw, 64px);
+    color: #E7E3E9;
+    text-transform: uppercase;
+    letter-spacing: -1px;
+    line-height: 1.0;
+    margin-bottom: 20px;
+}
+
+.clash-apply-desc {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 13px;
+    color: rgba(231, 227, 233, 0.55);
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+    line-height: 1.85;
+    margin-bottom: 36px;
+}
+
+.clash-apply-btn {
+    display: inline-block;
+    background: #64E2D3;
+    color: #080A0B;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    text-decoration: none;
+    padding: 18px 48px;
+    border-radius: 5px;
+    border: 2px solid #64E2D3;
+    transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease;
+    margin-bottom: 20px;
+}
+
+.clash-apply-btn:hover {
+    background: transparent;
+    color: #64E2D3;
+    transform: translateY(-2px);
+}
+
+.clash-apply-contact {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 12px;
+    color: rgba(231, 227, 233, 0.40);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.clash-apply-email {
+    color: rgba(231, 227, 233, 0.60);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.clash-apply-email:hover {
+    color: #64E2D3;
+}
+
+/* ── ATL Clash responsive ── */
+@media (max-width: 900px) {
+    .clash-hero-bg {
+        background-image: url('./images/atl-club-clash-flyer-background-portrait.jpg');
+        background-position: center 40%;
+    }
+
+    .clash-hero-inner {
+        grid-template-columns: 1fr;
+        align-items: center;
+    }
+
+    .clash-hero-athlete {
+        display: flex;
+        position: absolute;
+        right: -10px;
+        bottom: 0;
+        height: 72%;
+        opacity: 0.13;
+        pointer-events: none;
+        z-index: 1;
+    }
+
+    .clash-athlete-img {
+        height: 100%;
+        width: auto;
+        filter: none;
+    }
+
+    .clash-hero-text {
+        position: relative;
+        z-index: 2;
+        padding: 80px 0 60px;
+    }
+
+    .clash-why-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .clash-who-card {
+        flex: 1 1 calc(50% - 16px);
+        max-width: calc(50% - 16px);
+        min-width: 220px;
+    }
+
+    .clash-who-fact {
+        padding: 20px 20px;
+    }
+
+    .clash-info-strip {
+        padding: 16px 20px;
+        gap: 0;
+    }
+
+    .clash-info-item {
+        padding: 8px 16px;
+    }
+
+    .clash-info-sep {
+        height: 24px;
+    }
+}
+
+@media (max-width: 600px) {
+    .clash-why-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .clash-mechanic {
+        grid-template-columns: 56px 1fr;
+        gap: 16px;
+    }
+
+    .clash-mechanic-num {
+        font-size: 36px;
+    }
+
+    .clash-who-card {
+        flex: 1 1 100%;
+        max-width: 100%;
+    }
+
+    .clash-who-facts {
+        flex-direction: column;
+        border-bottom: none;
+    }
+
+    .clash-who-fact {
+        border-right: none;
+        border-bottom: 1px solid #e8e8e8;
+        padding: 16px 0;
+    }
+
+    .clash-who-fact:last-child {
+        border-bottom: none;
+    }
+
+    .clash-info-sep {
+        display: none;
+    }
+
+    .clash-info-strip {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0;
+    }
+
+    .clash-info-item {
+        padding: 12px 16px;
+        border-bottom: 1px solid rgba(255,255,255,0.06);
+        text-align: center;
+        align-items: center;
+    }
+
+    .clash-info-item:nth-child(odd) {
+        border-right: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .clash-info-item:last-child {
+        grid-column: 1 / -1;
+        border-right: none;
+        border-bottom: none;
+    }
+}
