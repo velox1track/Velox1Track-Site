@@ -5523,6 +5523,31 @@ h1, h2, h3, h4 {
     color: rgba(8, 10, 11, 0.62);
 }
 
+/* Keep points and infractions cards visually aligned on desktop */
+@media (min-width: 901px) {
+    .format-page .points-penalties-container {
+        align-items: stretch;
+    }
+
+    .format-page .points-system,
+    .format-page .penalties-system {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+    }
+
+    .format-page .points-grid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-sm);
+        flex: 1;
+    }
+
+    .format-page .point-item {
+        flex: 1;
+        padding: var(--spacing-sm) var(--spacing-md);
+    }
+}
+
 /* ── Stagger mechanics cards on format page ── */
 .format-page .mechanics-card[data-reveal]:nth-child(2) { transition-delay: 0.10s; }
 .format-page .mechanics-card[data-reveal]:nth-child(3) { transition-delay: 0.20s; }
