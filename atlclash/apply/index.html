@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Velox 1: ATL Club Clash — Apply</title>
+    <title>Velox 1: Race Roulette No. 1 Recap</title>
 
     <!-- Prevent search engines from indexing this redirect page -->
     <meta name="robots" content="noindex, nofollow">
@@ -61,11 +61,12 @@
 
     <div class="loading-wrap">
         <div class="loading-spinner"></div>
-        <p class="loading-text">Loading application...</p>
+        <p class="loading-text">Redirecting...</p>
     </div>
 
     <script>
-        var JOTFORM_URL = 'https://form.jotform.com/260798369510063';
+        var RECAP_URL = 'https://velox1.com/schedule.html';
+        var RECAP_ANCHOR = '#race-roulette-1-recap';
         var FALLBACK_MS = 1500;
 
         // Build destination URL, forwarding any UTM params from the current URL
@@ -83,7 +84,7 @@
                 if (sourceParams.get(key)) destParams.set(key, sourceParams.get(key));
             });
 
-            return JOTFORM_URL + '?' + destParams.toString();
+            return RECAP_URL + '?' + destParams.toString() + RECAP_ANCHOR;
         }
 
         // Push custom event to dataLayer so GTM can record the QR scan
@@ -91,7 +92,7 @@
         window.dataLayer.push({
             event: 'flyer_qr_scan',
             event_category: 'flyer',
-            event_label: 'atl_club_clash_apply'
+            event_label: 'atl_club_clash_recap'
         });
 
         var redirected = false;

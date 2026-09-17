@@ -845,19 +845,22 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-// ---- Event photo carousel (schedule page) ----
-(function () {
-    const carousel = document.getElementById('event-carousel');
-    if (!carousel) return;
+// ---- Event photo carousels (schedule page) ----
+// Supports multiple independent carousels on the same page: each instance is
+// scoped to its own .carousel container instead of relying on page-wide IDs.
+document.querySelectorAll('.carousel').forEach(function (carousel) {
+    const track   = carousel.querySelector('.carousel-track');
+    if (!track) return;
 
-    const track    = document.getElementById('carousel-track');
-    const slides   = track.querySelectorAll('.carousel-slide');
-    const dots     = document.querySelectorAll('.carousel-dot');
-    const prevBtn  = document.getElementById('carousel-prev');
-    const nextBtn  = document.getElementById('carousel-next');
-    const total    = slides.length;
-    let current    = 0;
-    let autoTimer  = null;
+    const slides  = track.querySelectorAll('.carousel-slide');
+    const dots    = carousel.querySelectorAll('.carousel-dot');
+    const prevBtn = carousel.querySelector('.carousel-prev');
+    const nextBtn = carousel.querySelector('.carousel-next');
+    const total   = slides.length;
+    if (!total) return;
+
+    let current   = 0;
+    let autoTimer = null;
 
     function goTo(idx) {
         current = ((idx % total) + total) % total;
@@ -874,8 +877,8 @@ document.addEventListener('DOMContentLoaded', function() {
         startAuto();
     }
 
-    prevBtn.addEventListener('click', () => { goTo(current - 1); resetAuto(); });
-    nextBtn.addEventListener('click', () => { goTo(current + 1); resetAuto(); });
+    if (prevBtn) prevBtn.addEventListener('click', () => { goTo(current - 1); resetAuto(); });
+    if (nextBtn) nextBtn.addEventListener('click', () => { goTo(current + 1); resetAuto(); });
 
     dots.forEach((dot, i) => {
         dot.addEventListener('click', () => { goTo(i); resetAuto(); });
@@ -896,7 +899,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }, { passive: true });
 
     startAuto();
-}());
+});
 
 // Universal Links / App Links require a genuine anchor-element click to trigger
 // reliably across all apps (LinkedIn and Instagram are strict about this).

@@ -5723,6 +5723,7 @@ h1, h2, h3, h4 {
 .trial-milestone {
     background: #111111;
     border-top: 1px solid rgba(255, 255, 255, 0.06);
+    border-bottom: 2px solid rgba(100, 226, 211, 0.7);
     padding: 20px 40px;
 }
 
